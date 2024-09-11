@@ -462,26 +462,41 @@ body {
 
         &-marquee {
             display: flex;
+            justify-content: center;
+            transform: rotate(-28.25deg);
+
+            &:nth-child(2) {
+                .home-idea-marquee-inner {
+                    flex-direction: row-reverse;
+                }
+            }
 
             &-wrapper {
                 grid-column: 1/-1;
-                grid-row: 2/4;
+                grid-row: 1/4;
                 
                 position: relative;
                 margin-inline: calc(var(--container-padding) * -1);
                 display: flex;
-                background-color: #338DFF;
                 z-index: -1;
+                opacity: .06;
             }
 
             &-sticky {
                 position: sticky;
-                top: calc(50dvh - 50rem);
+                height: 100dvh;
+                top: calc(0rem);
+
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                row-gap: 5rem;
             }
 
             &-inner {
                 display: flex;
                 flex-shrink: 0;
+                will-change: transform;
             }
 
             &-item {
