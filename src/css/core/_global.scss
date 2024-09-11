@@ -1,0 +1,79 @@
+body {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+.btn {
+    
+}
+
+img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: none;
+}
+.img {
+    height: auto;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+    pointer-events: none;
+    display: block;
+    outline: 0;
+
+    &-height {
+        width: auto;
+        height: 100%;
+    }
+    &-fill {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+    }
+}
+
+input, textarea {
+    appearance: none;
+    -webkit-appearance: none;
+}
+textarea {
+    resize: vertical;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    display: inline-block;
+    cursor: pointer;
+}
+button {
+    cursor: pointer;
+    outline: none;
+    border: none;
+    background-color: transparent;
+}
+
+ul {
+    list-style-type: none;
+    gap: 0px;
+
+    li {
+        padding: 0px;
+        margin: 0px;
+    }
+}
+
+button, input, textarea {
+    appearance: none;
+    -webkit-appearance: none;
+    outline: none;
+    border: none;
+    font-family: inherit;
+}

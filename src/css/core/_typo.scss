@@ -1,0 +1,129 @@
+:root {
+    --fs-h0: 12rem;
+    --lh-h0: .9em;
+    --ls-h1: 0em;
+
+    --fs-h1: 8rem;
+    --lh-h1: 1em;
+    --ls-h1: 0.01em;
+
+    --fs-h2: 6.2rem;
+    --lh-h2: 1.2em;
+    --ls-h2: 0.01em;
+
+    --fs-h3: 4rem;
+    --lh-h3: 0.9em;
+    --ls-h3: 0.01em;
+
+    --fs-21: 2.1rem;
+    --lh-21: 1.5em;
+    --ls-21: 0em;
+
+    --fs-27: 2.7rem;
+    --lh-27: .9em;
+    --ls-27: 0.01em;
+
+    --fs-33: 3.3rem;
+    --lh-33: 1.2em;
+    --ls-33: 0.01em;
+
+    --fs-180: 18rem;
+    --lh-180: 1.2em;
+    --ls-180: 0.01em;
+
+    --fs-216: 21.6rem;
+    --lh-216: 1em;
+    --ls-216: 0em;
+    
+}
+
+$txtSizes: 21, 27, 33, 180, 216;
+
+.txt {
+    @each $size in $txtSizes {
+        &-#{$size} {
+            @include text(#{$size});
+        }
+    }
+    &-reg {
+        font-weight: normal !important;
+    }
+    &-black {
+        font-weight: 900 !important;
+    }
+    &-upper {
+        text-transform: uppercase;
+    }
+    &-title {
+        font-family: 'Shikamaru';
+    }
+    &-label {
+        font-family: 'CherishMoment';
+    }
+    &-up {
+        text-transform: uppercase;
+    }
+
+    &-magenta {
+        color: $cl-magenta;
+    }
+    &-pink {
+        color: $cl-pink;
+    }
+}
+
+@for $i from 0 through 3 {
+    h#{$i}, .h#{$i} {
+        @include text(h#{$i});
+        letter-spacing: var(--ls-h#{$i});
+        font-family: 'Shikamaru', sans-serif;
+        font-weight: normal
+    }
+}
+
+body {
+    @include text(21);
+}
+
+.icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    svg {
+        width: 100%;
+        height: auto
+    }
+    &-12 {
+        @include size(1.2rem);
+    }
+    &-16 {
+        @include size(1.6rem);
+    }
+    &-20 {
+        @include size(2rem);
+    }
+    &-22 {
+        @include size(2.2rem);
+    }
+    &-24 {
+        @include size(2.4rem);
+    }
+    &-28 {
+        @include size(2.8rem);
+    }
+    &-32 {
+        @include size(3.2rem);
+    }
+    &-64 {
+        @include size(6.4rem);
+    }
+    &-80 {
+        @include size(8rem);
+    }
+    &-48 {
+        @include size(4.8rem);
+    }
+    &-100 {
+        @include size(10rem);
+    }
+}

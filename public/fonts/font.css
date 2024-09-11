@@ -1,0 +1,30 @@
+@font-face {
+    font-family: 'CherishMoment';
+    src: url('./CherishMoment.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: fallback;
+}
+
+@font-face {
+    font-family: 'PequenaNeo';
+    src: url('./PequenaNeo_Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: fallback;
+}
+@font-face {
+    font-family: 'PequenaNeo';
+    src: url('./PequenaNeo_Black.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+    font-display: fallback;
+}
+
+@font-face {
+    font-family: 'Shikamaru';
+    src: url('./Shikamaru.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: fallback;
+}

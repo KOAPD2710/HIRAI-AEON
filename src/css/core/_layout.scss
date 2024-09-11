@@ -1,0 +1,154 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-kerning: none;
+    -webkit-text-rendering: optimizeSpeed;
+    text-rendering: optimizeSpeed;
+    
+    --fs-global: 0.6944444444444444444vw;
+    --container-padding: 8rem;
+    
+    font-family: 'PequenaNeo', sans-serif;
+    font-size: var(--fs-global);
+
+    color: var(--cl-black);
+    background-color: var(--cl-white);
+}
+
+html.lenis, html.lenis body {
+    height: auto;
+    min-height: 100%;
+
+    -ms-scroll-chaining: none;
+    overscroll-behavior: none;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+.container {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 var(--container-padding);
+}
+
+.grid {
+    --grid-column: 12;
+    --grid-gap: 2.4rem;
+    display: grid;
+    column-gap: var(--grid-gap);
+    grid-template-columns: repeat(var(--grid-column), 1fr);
+}
+
+.g-lines {
+    white-space: nowrap;
+}
+
+.line {
+    background-color: var(--cl-black);
+    @include size(100%, var(--line-width));
+
+    &-fluid {
+        position: absolute;
+
+        &-top {
+            top: calc(var(--line-width)/ -2);
+            left: 0;
+        }
+        &-bot {
+            bottom: calc(var(--line-width)/ -2);
+            left: 0;
+        }
+    }
+
+    &-mid {
+        position: absolute;
+        top: 0px;
+        left: calc(50% - var(--line-width)/2);
+        @include size(var(--line-width), 100%);
+    }
+}
+
+.hover {
+
+    &-line {
+        position: relative;
+        overflow: hidden;
+
+        &::before {
+            content: '';
+
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            display: block;
+            @include size(100%, var(--line-width));
+
+            transform: scaleX(0);
+            background-color: var(--cl-black);
+
+            transform-origin: right;
+            transition: transform ease-in .3s;
+        }
+
+        &:hover::before {
+            transform-origin: left;
+            transform: scaleX(1);
+        }
+    }
+}
+
+
+.custome-scroll {
+    overflow-y: auto;
+    overflow-x: clip;
+    scroll-behavior: smooth;
+}
+
+
+
+.test {
+    height: 200vh;
+    background-color: greenyellow;
+
+    &-grid {
+        position: fixed;
+        top: 0;
+        @include size(100%, 100%);
+
+        z-index: 9999;
+        pointer-events: none;
+        user-select: none;
+        opacity: .05;
+
+        .container {
+            height: 100%;
+        }
+
+        &-inner {
+            background-color: black;
+            height: 100%;
+        }
+    }
+}

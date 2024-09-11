@@ -1,0 +1,45 @@
+@import 'variables';
+
+// @mixin lg {
+// 	@media screen and (max-width: $lg-min) {
+// 		@content;
+// 	}
+// }
+// @mixin md {
+// 	@media screen and (max-width: $md-max) {
+// 		@content;
+// 	}
+// }
+// @mixin md-up {
+// 	@media screen and (min-width: $md-min) {
+// 		@content;
+// 	}
+// }
+// // tablet
+// @mixin sm {
+// 	@media screen and (max-width: $sm-max) {
+// 		@content;
+// 	}
+// }
+// @mixin sm-up {
+// 	@media screen and (min-width: $sm-min ) {
+// 		@content;
+// 	}
+// }
+// // mobile
+// @mixin xs {
+// 	@media screen and (max-width: $xs-max) {
+// 		@content;
+// 	}
+// }
+
+@mixin text($fontSize) {
+	font-size: var(--fs-#{$fontSize});
+	line-height: var(--lh-#{$fontSize});
+	letter-spacing: var(--ls-#{$fontSize});
+}
+
+@mixin size($w, $h: $w) {
+	width: $w;
+	height: $h;
+}
