@@ -34,10 +34,13 @@
     --fs-216: 21.6rem;
     --lh-216: 1em;
     --ls-216: 0em;
-    
+
+    --fs-220: 22rem;
+    --lh-220: 1em;
+    --ls-220: 0em;
 }
 
-$txtSizes: 21, 27, 33, 180, 216;
+$txtSizes: 21, 27, 33, 180, 216, 220;
 
 .txt {
     @each $size in $txtSizes {
