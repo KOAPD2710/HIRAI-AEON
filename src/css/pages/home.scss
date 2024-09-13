@@ -695,7 +695,7 @@ body {
         margin-top: -1px;
         background: linear-gradient(162deg, #fad2ec  0%, #ECF9FF 88.5%);
 
-        padding-block: 3rem;
+        padding-top: 3rem;
 
         &-title {
             grid-column: 1/-1;
@@ -781,16 +781,30 @@ body {
                 position: relative;
                 z-index: 10;
 
-                grid-column: 1/-1;
-                grid-row: 3/4;
                 @include size(0px);
+
+                &.middle {
+                    grid-column: 1/-1;
+                    grid-row: 3/4;
+                }
+                &.bottom {
+                    grid-column: 1/-1;
+                    grid-row: 5/6;
+
+                    justify-self: end;
+                }
             }
             &.cloud-2 {
-
                 width: 37.779rem;
                 margin-top: -15rem;
                 margin-left: calc(-1 * var(--container-padding) - 9.2rem);
                 filter: drop-shadow(0px -0.2991rem 2.9407rem rgba(255, 255, 255, 0.77));
+            }
+            &.cloud-3 {
+                width: 60.386rem;
+                margin-top: -16rem;
+                margin-left: -35.4rem;
+                filter: drop-shadow(0px 0px 9.5302rem #FFF) drop-shadow(0px -.478rem 4.7004rem rgba(255, 229, 238, 0.63));
             }
         }
 
@@ -799,6 +813,8 @@ body {
             grid-row: 4/5;
 
             position: relative;
+            
+            margin-top: -5.6rem;
             margin-inline: -5.4rem -5.6rem;
 
             &-main {
@@ -846,6 +862,13 @@ body {
                     }
                 }
             }
+        }
+
+        &-mask {
+            grid-column: 1/-1;
+            margin-top: -31.4rem;
+            margin-bottom: -11.2rem;
+            margin-inline: calc(var(--container-padding) * -1);
         }
     }
 }
