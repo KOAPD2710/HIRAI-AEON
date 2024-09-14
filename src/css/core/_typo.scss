@@ -27,9 +27,17 @@
     --lh-33: 1.2em;
     --ls-33: 0.01em;
 
+    --fs-130: 13rem;
+    --lh-130: 1em;
+    --ls-130: 0em;
+
     --fs-180: 18rem;
     --lh-180: 1.2em;
     --ls-180: 0.01em;
+
+    --fs-200: 20rem;
+    --lh-200: 1em;
+    --ls-200: 0em;
 
     --fs-216: 21.6rem;
     --lh-216: 1em;
@@ -40,7 +48,7 @@
     --ls-220: 0em;
 }
 
-$txtSizes: 21, 27, 33, 180, 216, 220;
+$txtSizes: 21, 27, 33, 130, 180, 200, 216, 220;
 
 .txt {
     @each $size in $txtSizes {
@@ -72,6 +80,9 @@ $txtSizes: 21, 27, 33, 180, 216, 220;
     }
     &-pink {
         color: $cl-pink;
+    }
+    &-peri {
+        color: $cl-periwinkle;
     }
 }
 
