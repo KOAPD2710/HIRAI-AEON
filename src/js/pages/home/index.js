@@ -484,6 +484,7 @@ const home = {
             let tlBg = gsap.timeline({
                 scrollTrigger: {
                     trigger: DOMTarget,
+                    toggleActions: 'play pause play pause',
                 },
                 repeat: -1
             })
@@ -495,10 +496,71 @@ const home = {
                     duration: 60
                 })
             tlBg.seek(28800)
-
-
         }
         homeOption(data)
+
+        function homePose(data) {
+            const DOMTarget = $(data.next.container).find('.home-pose')
+
+            let target = {
+                title: DOMTarget.find('.home-pose-title'),
+                main: DOMTarget.find('.home-pose-main'),
+                tail: DOMTarget.find('.home-pose-tail')
+            }
+
+            let split = {
+                title: new SplitText(target.title, typeOpts.chars)
+            }
+
+            let tlTxt = gsap.timeline({
+                scrollTrigger: {
+                    trigger: target.title,
+                    start: 'bottom bottom',
+                }
+            })
+
+            tlTxt
+                .from(split.title.chars, {
+                    yPercent: 50,
+                    opacity: 0,
+                    stagger: .015,
+                    duration: .4,
+                    ease: 'none',
+                    onComplete: () => split.title.revert()
+                })
+                .from(target.tail.find('img'), {
+                    yPercent: 10,
+                    opacity: 0,
+                    duration: 1.6,
+                    ease: 'power2.out',
+                    clearProps: 'all'
+                }, '>=-.2')
+                .from(target.main, {
+                    xPercent: -2,
+                    opacity: 0,
+                    ease: 'power2.out',
+                    duration: 1,
+                    clearProps: 'all'
+                }, '>=-1.4')
+
+            let tlAnimTail = gsap.timeline({
+                scrollTrigger: {
+                    trigger: DOMTarget,
+                    scrub: .5,
+                }
+            })
+
+            tlAnimTail
+                .fromTo(target.tail, {
+                    yPercent: -5,
+                }, {
+                    yPercent: 10,
+                    xPercent: -5,
+                    ease: 'none'
+                })
+
+        }
+        homePose(data)
 
     },
     beforeLeave(data) {
