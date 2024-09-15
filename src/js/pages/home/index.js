@@ -489,13 +489,13 @@ const home = {
                 repeat: -1
             })
 
-            tlBg
-                .to(target.bg, {
-                    '--bg-move': '201rem',
-                    ease: 'none',
-                    duration: 60
-                })
-            tlBg.seek(28800)
+            // tlBg
+            //     .to(target.bg, {
+            //         '--bg-move': '201rem',
+            //         ease: 'none',
+            //         duration: 60
+            //     })
+            // tlBg.seek(28800)
         }
         homeOption(data)
 

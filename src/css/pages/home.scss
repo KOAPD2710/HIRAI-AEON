@@ -295,7 +295,7 @@
         }
     
         &-item {
-            filter: grayscale(.8) contrast(.9) sepia(.4) saturate(.5);
+            filter: grayscale(.2) contrast(0.9) saturate(0.1) brightness(1.1);
             will-change: filter;
             transition: filter .2s ease;
 
