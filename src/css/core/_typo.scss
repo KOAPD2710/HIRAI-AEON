@@ -97,7 +97,6 @@ $txtSizes: 21, 27, 33, 38, 51, 130, 180, 200, 216, 220;
 @for $i from 0 through 3 {
     h#{$i}, .h#{$i} {
         @include text(h#{$i});
-        letter-spacing: var(--ls-h#{$i});
         font-family: 'Shikamaru', sans-serif;
         font-weight: normal
     }

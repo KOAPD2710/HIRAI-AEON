@@ -28,9 +28,13 @@ const initScriptPage = () => {
             sync: true,
             once(data) {
                 initLenis()
-                ScrollTop()
                 InitHeader()
                 InitResize()
+                ScrollTop()
+
+                window.onbeforeunload = function () {
+                    ScrollTop()
+                }
             },
             leave(data) {
                 gsap.to(data.current.container, {

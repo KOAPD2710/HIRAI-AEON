@@ -13,7 +13,7 @@ function easeOutExpo(x) {
 const initLenis = () => {
     lenis = new Lenis({
         duration: 1.5,
-        easing: (t) => easeOutExpo(t),
+        // easing: (t) => easeOutExpo(t),
         direction: "vertical",
         gestureDirection: "vertical",
         smooth: true,
