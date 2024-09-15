@@ -1,7 +1,3 @@
-body {
-    contain: paint;
-}
-
 .home {
     &-hero {
         position: relative;
@@ -131,6 +127,8 @@ body {
 
         background: linear-gradient(170deg, #FFEEF2 20.37%, #FDFDFD 48.99%, #FFF 60.61%, #D5D5F9 87.09%);
 
+        contain: paint;
+
         &-mask {
             position: absolute;
             top: 0;
@@ -231,12 +229,18 @@ body {
     }
 
     &-transcloud {
+        contain: paint;
+        
         position: relative;
         z-index: 10;
-        height: 0;
         display: flex;
         align-items: center;
         justify-content: center;
+
+        pointer-events: none;
+        user-select: none;
+
+        margin-block: -63rem -64.5rem;
 
         &-wrapper {
             display: flex;
@@ -315,10 +319,14 @@ body {
         position: relative;
         z-index: 2;
 
+        margin-top: -17rem;
+        contain: paint;
+
         &-bg {
-            position: absolute;
+            // position: absolute;
             width: 100%;
-            bottom: calc(100% - 2px);
+            
+            margin-block: 7rem -2px;
 
             filter: drop-shadow(0rem -1.1rem 4rem rgba(0, 0, 0, .5) );
         }
@@ -380,7 +388,9 @@ body {
 
         z-index: 2;
         margin-top: -1px;
+
         background-color: $cl-semi-white;
+        contain: paint;
 
 
         &-content {
@@ -599,6 +609,8 @@ body {
         position: relative;
         padding-block: 15.3rem 4.3rem;
 
+        contain: paint;
+
         &-title {
             grid-column: 8/-1;
 
@@ -622,8 +634,10 @@ body {
 
     &-anatomy {
         position: relative;
-        padding-block: 2rem 2.753rem;
+        padding-block: 8.5rem 2.753rem;
         background: linear-gradient(184deg, #FFF 48.38%, #FAD2EC 96.72%);
+
+        contain: paint;
 
         &-title {
             grid-column:  2/-1;
@@ -685,11 +699,20 @@ body {
             }
         }
 
+        &-pattern {
+            position: absolute;
+            top: -11rem;
+            left: 19rem;
+            z-index: -1;
+            opacity: .05;
+            width: 68.577rem;
+        }
+
         &-flower {
             position: absolute;
             &.flower1 {
                 width: 45.3rem;
-                top: -6.5rem;
+                top: 0rem;
                 right: -4.6rem;
 
                 img {
@@ -709,9 +732,13 @@ body {
         position: relative;
         z-index: 2;
         margin-top: -1px;
-        background: linear-gradient(162deg, #fad2ec  0%, #ECF9FF 88.5%);
+        background: linear-gradient(171deg, #fad2ec 0%, #ecf9ff 64.5%, transparent 80%);
 
-        padding-top: 3rem;
+        padding-top: 17.2rem;
+        margin-bottom: -32.2rem;
+
+
+        contain: paint;
 
         &-title {
             grid-column: 1/-1;
@@ -785,7 +812,7 @@ body {
         &-cloud {
             &.cloud-1 {
                 position: absolute;
-                top: -10.2rem;
+                top: 4rem;
                 right: -7.279rem;
 
                 width: 40.48rem;
@@ -882,8 +909,8 @@ body {
 
         &-mask {
             grid-column: 1/-1;
-            margin-top: -31.4rem;
-            margin-bottom: -11.2rem;
+            grid-row: 5/6;
+            margin-block: -31.4rem 20rem;
             margin-inline: calc(var(--container-padding) * -1);
         }
     }
@@ -894,6 +921,7 @@ body {
         background-image: url(../../assets/vertion-bg.jpg);
         background-size: contain;
 
+        contain: paint;
 
         &-title {
             width: fit-content;
@@ -936,6 +964,8 @@ body {
         z-index: 2;
         background: linear-gradient(183deg, #FFFAE3 2.06%, #FFE5EE 92.14%);
         padding-bottom: 20rem;
+
+        // contain: paint;
 
         &-mask {
             width: 100%;
@@ -1014,16 +1044,19 @@ body {
     &-showcase {
         position: relative;
         z-index: 2;
-        padding-block: 5rem 8.3rem;
+        padding-bottom:8.3rem;
+
+        contain: paint;
+        margin-top: -12.3rem;
 
         &-mask {
             width: 100%;
-            position: absolute;
             bottom: calc(100% - 1px);
             background-image: url(../../assets/showcase-mask-top.svg);
             background-size: cover;
             background-repeat: repeat;
             background-position: 50% 0%;
+            margin-bottom: 5rem;
 
             img {
                 opacity: 0;
@@ -1140,6 +1173,7 @@ body {
     }
 
     &-adap {
+        contain: paint;
 
         &-title {
             
@@ -1233,7 +1267,10 @@ body {
 
     &-poster {
         position: relative;
-        padding-top: 32.635rem;
+        padding-top: calc(32.635rem + 21.394rem);
+
+        margin-top: -21.394rem;
+        contain: paint;
 
 
         &::after {
@@ -1258,13 +1295,13 @@ body {
 
             &.flower-1 {
                 width: 62rem;
-                top: -21.394rem;
+                top: 0rem;
                 left: -9.9rem;
             }
 
             &.flower-2 {
                 width: 44.2rem;
-                top: -3.135rem;
+                top: calc(-3.135rem + 21.394rem);
                 right: -8.9rem;
 
                 img {
@@ -1324,8 +1361,12 @@ body {
     }
 
     &-foot {
+        position: relative;
         height: 120dvh;
         background: linear-gradient(175deg, #FFEEF2 20.37%, #FDFDFD 48.99%, #FFF 60.61%, #D5D5F9 87.09%);
+        
+        margin-top: -2px;
+        contain: paint;
 
         .container {
             height: 100%;

@@ -51,7 +51,7 @@ const home = {
                 .from(target.scope, {
                     yPercent: 15,
                     opacity: 0,
-                    duration: .8,
+                    duration: 1,
                     ease: 'power2.out',
                     clearProps: 'all',
                 }, '>=-.4')
@@ -61,7 +61,7 @@ const home = {
                     stagger: .03,
                     duration: .6,
                     onComplete: () => split.title.revert()
-                }, '>=-.6')
+                }, '>=-.8')
                 .from(target.contentLogo, {
                     opacity: 0,
                     duration: 1.2,
@@ -88,6 +88,36 @@ const home = {
         function homePreamble(data) {
             const DOMTarget = $(data.next.container).find('.home-preamble')
 
+            const target = {
+                client: DOMTarget.find('.home-preamble-content.client'),
+                topic: DOMTarget.find('.home-preamble-content.topic'),
+
+            }
+
+            let split = {
+                clientTitle: new SplitText(target.client.find('.home-preamble-title'), typeOpts.chars),
+                clientDesc: new SplitText(target.client.find('.home-preamble-des'), typeOpts.chars),
+                topicTitle: new SplitText(target.topic.find('.home-preamble-title'), typeOpts.chars),
+                topicDesc: new SplitText(target.topic.find('.home-preamble-des'), typeOpts.chars),
+            }
+
+            let tl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: '.home-preamble-content.client',
+                    start: 'top bottom',
+                    markers: true
+                }
+            })
+
+            tl
+                .from(split.clientTitle.chars, {
+                    yPercent: 50,
+                    opacity: 0,
+                    stagger: .03,
+                    duration: .6,
+                    onComplete: () => split.clientTitle.revert()
+
+                })
 
 
         }
