@@ -1032,6 +1032,7 @@ body {
         &-video {
             border-radius: 4.3rem;
             overflow: hidden;
+            filter: brightness(1.1) saturate(1.2) contrast(1.05);
 
             video {
                 width: 100%;
@@ -1211,6 +1212,167 @@ body {
             &.lanyard-2 {
                 width: 51.77rem;
                 margin-left: 15.23rem;
+            }
+        }
+    }
+
+    &-poster {
+        position: relative;
+        padding-top: 32.635rem;
+
+
+        &::after {
+            content: '';
+            display: block;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            background-image: linear-gradient(to bottom, transparent 0%, #FFEEF2 98%);
+
+            @include size(100%, 20rem);
+
+        }
+        .container {
+            position: relative;
+        }
+
+        &-flower {
+            position: absolute;
+            z-index: 3;
+
+
+            &.flower-1 {
+                width: 62rem;
+                top: -21.394rem;
+                left: -9.9rem;
+            }
+
+            &.flower-2 {
+                width: 44.2rem;
+                top: -3.135rem;
+                right: -8.9rem;
+
+                img {
+                    transform: scaleX(-1);
+                }
+            }
+        }
+        &-mask {
+            position: absolute;
+            top: -1px;
+
+            z-index: 2;
+            width: 100%;
+
+
+            background-image: url(../../assets/poster-mask.svg);
+            background-size: cover;
+            background-repeat: repeat;
+            background-position: 50% 0%;
+
+            img {
+                opacity: 0;
+            }
+        }
+
+        &-main {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            margin-inline: calc(var(--container-padding) * -1);
+
+            background: linear-gradient(180deg, #FFF 0%, $cl-pink 100%);
+        }
+        &-sm {
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            @include size(38rem, 100%);
+
+            overflow: hidden;
+
+
+            &.left {
+                left: 0;
+            }
+            &.right {
+                right: 0;
+            }
+        }
+
+        &-center {
+            width: 65.6rem;
+            flex-shrink: 0;
+        }
+    }
+
+    &-foot {
+        height: 120dvh;
+        background: linear-gradient(175deg, #FFEEF2 20.37%, #FDFDFD 48.99%, #FFF 60.61%, #D5D5F9 87.09%);
+
+        .container {
+            height: 100%;
+        }
+        &-content {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+
+            &-wrapper {
+                grid-column: 1/-1;
+                grid-row: 1/2;
+
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                height: 100%;
+            }
+
+            * {
+                position: relative;
+                z-index: 2;
+            }
+        }
+
+        &-logo {
+            position: absolute;
+            z-index: 1;
+
+            width: 48.2rem;
+            margin-top: -7rem;
+            opacity: .16;
+        }
+
+        &-mountain {
+            grid-column: 1/-1;
+            grid-row: 1/2;
+
+            align-self: end;
+
+            margin-left: calc(var(--container-padding) * -1 - 1.677rem);
+            width: 50rem;
+        }
+
+        &-cloud {
+            position: absolute;
+
+            &.cloud-1 {
+                width: 180rem;
+
+                bottom: -49rem;
+            }
+
+            &.cloud-2 {
+                bottom: 10.815rem;
+                right: -5.7rem;
+
+                width: 28.8rem;
+                filter: drop-shadow(0px 0px 4.5447rem #FFF) blur(.25rem);
             }
         }
     }
