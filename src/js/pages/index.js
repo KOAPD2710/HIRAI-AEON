@@ -32,9 +32,9 @@ const initScriptPage = () => {
                 InitResize()
                 ScrollTop()
 
-                window.onbeforeunload = function () {
-                    ScrollTop()
-                }
+                // window.onbeforeunload = function () {
+                //     ScrollTop()
+                // }
             },
             leave(data) {
                 gsap.to(data.current.container, {

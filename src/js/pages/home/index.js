@@ -213,7 +213,7 @@ const home = {
                     trigger: DOMTarget,
                     start: 'top bottom',
                     end: 'bottom center',
-                    scrub: .1,
+                    scrub: 2,
                 }
             })
 
@@ -272,7 +272,7 @@ const home = {
             let tlTxt = gsap.timeline({
                 scrollTrigger: {
                     trigger: target.title,
-                    start: 'bottom bottom',
+                    start: 'bottom bottom-=10%',
                 }
             })
 
@@ -332,7 +332,7 @@ const home = {
             let tlTxt = gsap.timeline({
                 scrollTrigger: {
                     trigger: target.label,
-                    start: 'bottom bottom',
+                    start: 'bottom bottom-=10%',
                 }
             })
 
@@ -404,7 +404,7 @@ const home = {
                     .to($(el).find('.home-idea-marquee-inner'), {
                         xPercent: (idx % 2 === 0) ? -100 : 100,
                         ease: 'none',
-                        duration: $(el).find('.home-idea-marquee-inner').width() / 200
+                        duration: $(el).find('.home-idea-marquee-inner').width() / speed
                     }, "<=")
 
                 // $(el).on('mouseenter', (e) => {
@@ -417,12 +417,15 @@ const home = {
                 // })
 
             })
-            tlMarquee.seek(28800)
+            let easeTL = "circ.out";
+
+            tlMarquee.seek(28800);
             lenis.on("scroll", (e) => {
                 if (e.direction > 0) {
                     gsap.to(tlMarquee, {
                         timeScale: 1,
                         duration: 1,
+                        ease: easeTL,
                         overwrite: true,
                     });
                 }
@@ -430,6 +433,7 @@ const home = {
                     gsap.to(tlMarquee, {
                         timeScale: -1,
                         duration: 1,
+                        ease: easeTL,
                         overwrite: true,
                     });
                 }
@@ -515,7 +519,7 @@ const home = {
             let tlTxt = gsap.timeline({
                 scrollTrigger: {
                     trigger: target.title,
-                    start: 'bottom bottom',
+                    start: 'bottom bottom-=10%',
                 }
             })
 
@@ -541,7 +545,7 @@ const home = {
                     ease: 'power2.out',
                     duration: 1,
                     clearProps: 'all'
-                }, '>=-1.4')
+                }, '>=-1.6')
 
             let tlAnimTail = gsap.timeline({
                 scrollTrigger: {
@@ -562,6 +566,315 @@ const home = {
         }
         homePose(data)
 
+        function homeAnatomy(data) {
+            const DOMTarget = $(data.next.container).find('.home-anatomy')
+
+            let target = {
+                title: DOMTarget.find('.home-anatomy-title'),
+                main: DOMTarget.find('.home-anatomy-main'),
+                mascot: DOMTarget.find('.home-anatomy-mascot'),
+                items: DOMTarget.find('.home-anatomy-item'),
+                pattern: DOMTarget.find('.home-anatomy-pattern'),
+                flower: DOMTarget.find('.home-anatomy-flower'),
+            }
+
+            let split = {
+                title: new SplitText(target.title.find('h1'), typeOpts.chars)
+            }
+
+            let tlTxt = gsap.timeline({
+                scrollTrigger: {
+                    trigger: target.title,
+                    start: 'bottom bottom-=10%',
+                }
+            })
+
+            tlTxt
+                .from(split.title.chars, {
+                    yPercent: 50,
+                    opacity: 0,
+                    stagger: .01,
+                    duration: .6,
+                    ease: 'power2.out',
+                    onComplete: () => split.title.revert()
+                })
+                .from(target.title.find('.home-anatomy-title-fade'), {
+                    opacity: 0,
+                    yPercent: -30,
+                    duration: 1,
+                    ease: 'power2.out',
+                    clearProps: 'all'
+                }, '>=-.7')
+
+            let tlMain = gsap.timeline({
+                scrollTrigger: {
+                    trigger: target.main,
+                    start: 'top top+=80%',
+                }
+            })
+            tlMain
+                .from(target.mascot, {
+                    yPercent: 5,
+                    opacity: 0,
+                    ease: 'power1.out',
+                    duration: .6,
+                    clearProps: 'all'
+                })
+                .from(target.pattern, {
+                    y: '5rem',
+                    opacity: 0,
+                    ease: 'power1.out',
+                    duration: .6,
+                    clearProps: 'all'
+                }, '>=-.4')
+                .from(target.items, {
+                    y: '5rem',
+                    opacity: 0,
+                    stagger: .08,
+                    ease: 'power2.out',
+                    duration: .6,
+                    clearProps: 'all'
+                }, '>=-.4')
+
+            let tlAnimScrub = gsap.timeline({
+                scrollTrigger: {
+                    trigger: target.main,
+                    start: 'top bottom',
+                    scrub: .2,
+                }
+            })
+
+            tlAnimScrub
+                .to(target.main, {
+                    y: '2rem',
+                    ease: 'none'
+                })
+                .from(target.pattern.find('img'), {
+                    yPercent: -10,
+                    ease: 'none'
+                }, "<=")
+
+            let tlAnimFlower = gsap.timeline({
+                scrollTrigger: {
+                    trigger: DOMTarget,
+                    scrub: .2,
+                }
+            })
+
+            tlAnimFlower
+                .to(target.flower.filter('.flower1'), {
+                    yPercent: 15,
+                    xPercent: 3,
+                    filter: 'blur(.2rem)',
+                    ease: 'none'
+                })
+                .from(target.flower.filter('.flower2'), {
+                    yPercent: -20,
+                    xPercent: -3,
+                    filter: 'blur(.1rem)',
+                    ease: 'power2.inOut'
+                }, "<=")
+        }
+        homeAnatomy(data)
+
+
+        function homeSticker(data) {
+            const DOMTarget = $(data.next.container).find('.home-sticker')
+
+            let target = {
+                cloud: DOMTarget.find('.home-sticker-cloud'),
+                title: DOMTarget.find('.home-sticker-title'),
+                paper: DOMTarget.find('.home-sticker-papper'),
+                paperItems: DOMTarget.find('.home-sticker-papper-main-item'),
+                circle: DOMTarget.find('.home-sticker-circle'),
+                mascot: DOMTarget.find('.home-sticker-mascot'),
+                showcase: DOMTarget.find('.home-sticker-showcase'),
+                showcaseItems: DOMTarget.find('.home-sticker-showcase-item'),
+                showcaseMain: DOMTarget.find('.home-sticker-showcase-main'),
+            }
+
+            let split = {
+                title: new SplitText(target.title, typeOpts.chars)
+            }
+
+            let tlCloud1 = gsap.timeline({
+                scrollTrigger: {
+                    trigger: target.cloud.filter('.cloud-1'),
+                    scrub: 2,
+                }
+            })
+            tlCloud1
+                .fromTo(target.cloud.filter('.cloud-1'), {
+                    xPercent: -10,
+                    filter: 'blur(.1rem)',
+                }, {
+                    xPercent: 5,
+                    filter: 'blur(.3rem)',
+                    ease: 'none'
+                })
+
+            let tlHead = gsap.timeline({
+                scrollTrigger: {
+                    trigger: target.title,
+                    start: 'bottom bottom-=10%',
+                }
+            })
+            tlHead
+                .from(split.title.chars, {
+                    yPercent: 50,
+                    opacity: 0,
+                    stagger: .01,
+                    duration: .6,
+                    ease: 'power1.out',
+                    onComplete: () => split.title.revert()
+                })
+                .from(target.paper, {
+                    yPercent: 10,
+                    opacity: 0,
+                    ease: 'power1.out',
+                    duration: .6,
+                    clearProps: 'all'
+                }, '>=-.3')
+                .from(target.circle, {
+                    yPercent: 10,
+                    opacity: 0,
+                    ease: 'power1.out',
+                    clearProps: 'all'
+                }, '>=-.2')
+                .from(target.paperItems, {
+                    yPercent: 5,
+                    opacity: 0,
+                    stagger: .08,
+                    duration: .8,
+                    ease: 'sine.out',
+                    clearProps: 'all'
+                }, '>=-.5')
+                .from(target.mascot, {
+                    yPercent: 5,
+                    opacity: 0,
+                    duration: .8,
+                    ease: 'sine.out',
+                    clearProps: 'all'
+                }, '>=-.8')
+
+
+            let tlCloud2 = gsap.timeline({
+                scrollTrigger: {
+                    trigger: target.cloud.filter('.cloud-2'),
+                    scrub: 2,
+                }
+            })
+            tlCloud2
+                .fromTo(target.cloud.filter('.cloud-2'), {
+                    xPercent: -5,
+                }, {
+                    xPercent: 10,
+                    ease: 'none'
+                })
+
+            let tlShowcase = gsap.timeline({
+                scrollTrigger: {
+                    trigger: target.showcase,
+                    start: 'top bottom-=40%',
+                }
+            })
+
+            tlShowcase
+                .from(target.showcaseItems, {
+                    yPercent: 10,
+                    opacity: 0,
+                    stagger: {
+                        from: 'center',
+                        amount: .2,
+                        ease: 'power1.out',
+                    },
+                    clearProps: 'all'
+                })
+                .from(target.showcaseMain, {
+                    yPercent: 10,
+                    opacity: 0,
+                    clearProps: 'all'
+                }, '>=-.3')
+
+
+            let tlCloud3 = gsap.timeline({
+                scrollTrigger: {
+                    trigger: target.cloud.filter('.cloud-3'),
+                    scrub: 2,
+                }
+            })
+
+            tlCloud3
+                .fromTo(target.cloud.filter('.cloud-3'), {
+                    xPercent: 5,
+                }, {
+                    xPercent: -5,
+                    filter: 'blur(.2rem)',
+                    ease: 'none'
+                })
+                .to(DOMTarget.find('.home-sticker-mask-bot'), {
+                    '--bg-move': '-40rem',
+                    ease: 'none'
+                }, '<=')
+
+        }
+        homeSticker(data)
+
+
+        function home3dSticker(data) {
+            const DOMTarget = $(data.next.container).find('.home-sticker3d')
+
+            let target = {
+                grid: DOMTarget.find('.home-sticker3d-grid'),
+                allItems: DOMTarget.find('.home-sticker3d-grid-item')
+            }
+
+            if ($(window).width() > 991) {
+                target.grid.empty();
+                target.grid.addClass('isDesktop');
+
+                let columns = 4;
+
+                for (i = 0; i < columns; i++) {
+
+                    let newGridInner = $('<div>').addClass('home-sticker3d-grid-inner');
+
+                    let shuffledItems = Array.from(target.allItems).sort(() => 0.5 - Math.random());
+                    const newColumn = shuffledItems.slice(0, 8);
+
+                    $(newColumn).each((idx, el) => newGridInner.append($(el).clone()));
+
+                    target.grid.append(newGridInner);
+                }
+
+
+                let tlInner = gsap.timeline({
+                    scrollTrigger: {
+                        trigger: DOMTarget,
+                        scrub: 1,
+                    }
+                })
+
+
+                tlInner
+                    .to(target.grid.find('.home-sticker3d-grid-inner:nth-child(odd)'), {
+                        yPercent: 10,
+                        ease: 'none'
+                    })
+                    .to(target.grid.find('.home-sticker3d-grid-inner:nth-child(even)'), {
+                        yPercent: -10,
+                        ease: 'none'
+                    }, "<=")
+            }
+
+            let tlMaskTop = gsap.timeline({
+                scrollTrigger: {
+                    // trigger: 
+                }
+            })
+
+        }
+        home3dSticker(data)
     },
     beforeLeave(data) {
         console.log(`leave ${this.namespace}`);

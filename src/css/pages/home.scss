@@ -838,7 +838,12 @@
 
                 width: 40.48rem;
                 z-index: 10;
-                filter: drop-shadow(0px -0.3204rem 3.1509rem rgba(255, 255, 255, 0.77));
+                will-change: transform, filter;
+
+
+                img {
+                    filter: drop-shadow(0px -0.3204rem 3.1509rem rgba(255, 255, 255, 0.77));
+                }
             }
 
             &-wrapper {
@@ -862,13 +867,25 @@
                 width: 37.779rem;
                 margin-top: -15rem;
                 margin-left: calc(-1 * var(--container-padding) - 9.2rem);
-                filter: drop-shadow(0px -0.2991rem 2.9407rem rgba(255, 255, 255, 0.77));
+
+                filter: blur(.5rem);
+                will-change: transform;
+
+                img {
+                    filter: drop-shadow(0px -0.2991rem 2.9407rem rgba(255, 255, 255, 0.77));
+                }
             }
             &.cloud-3 {
                 width: 60.386rem;
                 margin-top: -16rem;
                 margin-left: -35.4rem;
-                filter: drop-shadow(0px 0px 9.5302rem #FFF) drop-shadow(0px -.478rem 4.7004rem rgba(255, 229, 238, 0.63));
+
+                will-change: transform;
+
+                
+                img {
+                    filter: drop-shadow(0px 0px 9.5302rem #FFF) drop-shadow(0px -.478rem 4.7004rem rgba(255, 229, 238, 0.63));
+                }
             }
         }
 
@@ -933,16 +950,28 @@
             grid-row: 5/6;
             margin-block: -31.4rem 20rem;
             margin-inline: calc(var(--container-padding) * -1);
+
+            &-bot {
+                --bg-move: 0rem;
+                background-image: url(../../assets/sticker-showcase-mask-bot-bot.svg);
+                background-size: cover;
+                background-position: var(--bg-move);
+
+                img {
+                    opacity: 0;
+                }
+            }
         }
     }
 
     &-version3d {
         position: relative;
-        z-index: 1;
         background-image: url(../../assets/vertion-bg.jpg);
         background-size: contain;
-
+        
         contain: paint;
+        
+        z-index: 1;
 
         &-title {
             width: fit-content;
@@ -983,14 +1012,19 @@
     &-sticker3d {
         position: relative;
         z-index: 2;
-        background: linear-gradient(183deg, #FFFAE3 2.06%, #FFE5EE 92.14%);
-        padding-bottom: 20rem;
+        background: linear-gradient(183deg, transparent 10%, #FFFAE3 10.06%, #FFE5EE 92.14%);
 
-        // contain: paint;
+        margin-top: -13rem;
+
+        contain: paint;
+
+        .container {
+            position: relative;
+        }
 
         &-mask {
             width: 100%;
-            position: absolute;
+            // position: absolute;
             bottom: calc(100% - 1px);
             background-image: url(../../assets/sticker3d-mask-top.svg);
             background-size: cover;
@@ -1006,22 +1040,46 @@
             grid-column: 2/12;
             grid-row: 1/2;
 
-            margin-top: 2.5rem;
+            margin-block: 2.5rem 20rem;
             padding-inline: 1.6rem;
         }
 
         &-grid {
+            position: absolute;
             grid-column: 1/-1;
             grid-row: 1/2;
 
             display: grid;
-            height: fit-content;
+            // height: fit-content;
             grid-template-columns: repeat(4, 1fr);
             grid-template-rows: auto;
             gap: .5rem;
 
-            margin-top: 7rem;
+            padding-top: 7rem;
             padding-inline: 5.2rem;
+
+            @include size(100%);
+
+            &.isDesktop {
+                display: flex;
+                mask-image: linear-gradient(to bottom, transparent 0% ,white 5%);
+                padding-top: unset;
+                margin-top: -3rem;
+                height: calc(100% + 4rem);
+            }
+
+            &-inner {
+                display: flex;
+                flex-direction: column;
+                row-gap: .5rem;
+
+                &:nth-child(odd) {
+                    align-self: end;
+                }
+                &:nth-child(even) {
+                    align-self: start;
+                }
+            }
         }
 
         &-display {
