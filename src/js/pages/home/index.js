@@ -198,7 +198,12 @@ const home = {
                     ease: 'none'
                 })
         }
-        homePreamble(data)
+        ScrollTrigger.create({
+            trigger: $(data.next.container).find('.home-preamble'),
+            start: 'top bottom+=20%',
+            once: true,
+            onEnter: () => homePreamble(data)
+        })
 
 
         function homeTransCloud(data) {
@@ -225,7 +230,12 @@ const home = {
                 })
 
         }
-        homeTransCloud(data)
+        ScrollTrigger.create({
+            trigger: $(data.next.container).find('.home-transcloud'),
+            start: 'top bottom+=20%',
+            once: true,
+            onEnter: () => homeTransCloud(data)
+        })
 
 
         function homeMascot(data) {
@@ -238,7 +248,7 @@ const home = {
             let tl = gsap.timeline({
                 scrollTrigger: {
                     trigger: DOMTarget.find('.home-mascot-wrapper'),
-                    start: 'top top',
+                    start: 'top bottom',
                     endTrigger: '.home-mascot-wrapper',
                     end: 'bottom bottom',
                     scrub: .2,
@@ -246,13 +256,20 @@ const home = {
             })
 
             tl
-                .to(target.list, {
+                .fromTo(target.list, {
+                    yPercent: -30,
+                }, {
                     yPercent: -10,
-                    ease: 'none'
+                    ease: 'power2.out'
                 })
 
         }
-        homeMascot(data)
+        ScrollTrigger.create({
+            trigger: $(data.next.container).find('.home-mascot'),
+            start: 'top bottom+=20%',
+            once: true,
+            onEnter: () => homeMascot(data)
+        })
 
         function homeInfo(data) {
             const DOMTarget = $(data.next.container).find('.home-info')
@@ -312,7 +329,12 @@ const home = {
                     ease: 'none'
                 }, '<=')
         }
-        homeInfo(data)
+        ScrollTrigger.create({
+            trigger: $(data.next.container).find('.home-info'),
+            start: 'top bottom+=20%',
+            once: true,
+            onEnter: () => homeInfo(data)
+        })
 
         function homeIdea(data) {
             const DOMTarget = $(data.next.container).find('.home-idea')
@@ -440,7 +462,12 @@ const home = {
 
             });
         }
-        homeIdea(data)
+        ScrollTrigger.create({
+            trigger: $(data.next.container).find('.home-idea'),
+            start: 'top bottom+=20%',
+            once: true,
+            onEnter: () => homeIdea(data)
+        })
 
 
         function homeOption(data) {
@@ -501,7 +528,12 @@ const home = {
             //     })
             // tlBg.seek(28800)
         }
-        homeOption(data)
+        ScrollTrigger.create({
+            trigger: $(data.next.container).find('.home-option'),
+            start: 'top bottom+=20%',
+            once: true,
+            onEnter: () => homeOption(data)
+        })
 
         function homePose(data) {
             const DOMTarget = $(data.next.container).find('.home-pose')
@@ -564,7 +596,12 @@ const home = {
                 })
 
         }
-        homePose(data)
+        ScrollTrigger.create({
+            trigger: $(data.next.container).find('.home-pose'),
+            start: 'top bottom+=20%',
+            once: true,
+            onEnter: () => homePose(data)
+        })
 
         function homeAnatomy(data) {
             const DOMTarget = $(data.next.container).find('.home-anatomy')
@@ -675,7 +712,12 @@ const home = {
                     ease: 'power2.inOut'
                 }, "<=")
         }
-        homeAnatomy(data)
+        ScrollTrigger.create({
+            trigger: $(data.next.container).find('.home-anatomy'),
+            start: 'top bottom+=20%',
+            once: true,
+            onEnter: () => homeAnatomy(data)
+        })
 
 
         function homeSticker(data) {
@@ -818,7 +860,12 @@ const home = {
                 }, '<=')
 
         }
-        homeSticker(data)
+        ScrollTrigger.create({
+            trigger: $(data.next.container).find('.home-sticker'),
+            start: 'top bottom+=20%',
+            once: true,
+            onEnter: () => homeSticker(data)
+        })
 
 
         function home3dSticker(data) {
@@ -826,7 +873,9 @@ const home = {
 
             let target = {
                 grid: DOMTarget.find('.home-sticker3d-grid'),
-                allItems: DOMTarget.find('.home-sticker3d-grid-item')
+                allItems: DOMTarget.find('.home-sticker3d-grid-item'),
+                maskTop: DOMTarget.find('.home-sticker3d-mask'),
+
             }
 
             if ($(window).width() > 991) {
@@ -869,12 +918,184 @@ const home = {
 
             let tlMaskTop = gsap.timeline({
                 scrollTrigger: {
-                    // trigger: 
+                    trigger: target.maskTop,
+                    scrub: 2,
                 }
             })
 
+            tlMaskTop
+                .to(target.maskTop, {
+                    '--bg-move': '10rem',
+                    ease: 'none'
+                })
+
         }
-        home3dSticker(data)
+        ScrollTrigger.create({
+            trigger: $(data.next.container).find('.home-sticker3d'),
+            start: 'top bottom+=20%',
+            once: true,
+            onEnter: () => home3dSticker(data)
+        })
+
+
+        function homeShowcase(data) {
+            const DOMTarget = $(data.next.container).find('.home-showcase')
+
+            let target = {
+                maskTop: DOMTarget.find('.home-showcase-mask'),
+                main: DOMTarget.find('.home-showcase-main'),
+                flower: DOMTarget.find('.home-showcase-flower'),
+                flowerSm: DOMTarget.find('.home-showcase-flower.flower-sm'),
+                cloud: DOMTarget.find('.home-showcase-cloud'),
+            }
+
+            let tlMaskTop = gsap.timeline({
+                scrollTrigger: {
+                    trigger: target.maskTop,
+                    scrub: 2,
+                }
+            })
+
+            tlMaskTop
+                .from(target.maskTop, {
+                    '--bg-move': '-15rem',
+                    ease: 'none'
+                })
+
+            let tlMain = gsap.timeline({
+                scrollTrigger: {
+                    trigger: target.main,
+                    scrub: 2,
+                }
+            })
+            tlMain
+                .to(target.main, {
+                    y: '7.5rem',
+                    ease: 'none'
+                })
+                .to(target.flower.filter('.flower1'), {
+                    y: '12.5rem',
+                    filter: 'blur(.1rem)',
+                    ease: 'none'
+                }, '<=')
+                .to(target.flower.filter('.flower2'), {
+                    y: '6.5rem',
+                    filter: 'blur(.2rem)',
+                    ease: 'none'
+                }, '<=')
+                .to(target.flowerSm.filter('.flower-sm-1'), {
+                    y: '-1rem',
+                    ease: 'none'
+                }, '<=')
+                .to(target.flowerSm.filter('.flower-sm-2'), {
+                    y: '1rem',
+                    ease: 'none'
+                }, '<=')
+                .to(target.flowerSm.filter('.flower-sm-3'), {
+                    y: '2rem',
+                    ease: 'none'
+                }, '<=')
+                .to(target.cloud.filter('.cloud-1'), {
+                    xPercent: '10',
+                    filter: 'blur(.2rem)',
+                    ease: 'none'
+                }, '<=')
+                .to(target.cloud.filter('.cloud-2'), {
+                    xPercent: '-5',
+                    filter: 'blur(.2rem)',
+                    ease: 'none'
+                }, '<=')
+
+
+        }
+        ScrollTrigger.create({
+            trigger: $(data.next.container).find('.home-showcase'),
+            start: 'top bottom+=20%',
+            once: true,
+            onEnter: () => homeShowcase(data)
+        })
+
+
+        function homeAdap(data) {
+            const DOMTarget = $(data.next.container).find('.home-adap')
+
+            let target = {
+                titleWrapper: DOMTarget.find('.home-adap-title-wrapper'),
+                cupWrapper: DOMTarget.find('.home-adap-cup-wrapper'),
+                bagWrapper: DOMTarget.find('.home-adap-bag-wrapper'),
+                lanyard: DOMTarget.find('.home-adap-lanyard'),
+            }
+            let split = {
+                title: new SplitText(target.titleWrapper.find('.home-adap-title'), typeOpts.chars)
+            }
+
+            let tlTitle = gsap.timeline({
+                scrollTrigger: {
+                    trigger: target.titleWrapper,
+                    start: 'top bottom',
+                    end: 'bottom top',
+                    scrub: true,
+                }
+            })
+
+            tlTitle
+                .from(target.titleWrapper, {
+                    y: '5rem',
+                    ease: 'none'
+                })
+
+            gsap.from(split.title.chars, {
+                scrollTrigger: {
+                    trigger: target.titleWrapper,
+                },
+                yPercent: 50,
+                opacity: 0,
+                stagger: .05,
+                duration: .6,
+                onComplete: () => split.title.revert()
+            })
+
+            let tlCup = gsap.timeline({
+                scrollTrigger: {
+                    trigger: target.cupWrapper,
+                    scrub: 1,
+                }
+            })
+            tlCup
+                .from(target.cupWrapper.find('.home-adap-cup'), {
+                    scale: 1.2,
+                    yPercent: 10,
+                    ease: 'power2.out'
+                })
+
+            let tlBag = gsap.timeline({
+                scrollTrigger: {
+                    trigger: target.bagWrapper,
+                    scrub: 1.5,
+                    // markers: true
+                }
+            })
+
+            tlBag
+                .from(target.bagWrapper.find('.home-adap-bag img'), {
+                    yPercent: -5,
+                    scale: 1.1,
+                    ease: 'power1.out'
+                }, '<=')
+                .from(target.lanyard.filter('.lanyard-1'), {
+                    yPercent: -5,
+                    xPercent: -5,
+                    ease: 'power1.out'
+                }, '<=')
+                .from(target.lanyard.filter('.lanyard-2'), {
+                    yPercent: -10,
+                    xPercent: -5,
+                    ease: 'power1.out'
+                }, '<=')
+
+        }
+
+        homeAdap(data)
     },
     beforeLeave(data) {
         console.log(`leave ${this.namespace}`);
