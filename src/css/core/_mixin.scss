@@ -1,5 +1,7 @@
 @import 'variables';
 
+$sm-max: 767px;
+
 // @mixin lg {
 // 	@media screen and (max-width: $lg-min) {
 // 		@content;
@@ -16,11 +18,11 @@
 // 	}
 // }
 // // tablet
-// @mixin sm {
-// 	@media screen and (max-width: $sm-max) {
-// 		@content;
-// 	}
-// }
+@mixin sm {
+	@media screen and (max-width: $sm-max) {
+		@content;
+	}
+}
 // @mixin sm-up {
 // 	@media screen and (min-width: $sm-min ) {
 // 		@content;

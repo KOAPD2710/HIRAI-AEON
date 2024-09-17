@@ -21,6 +21,11 @@ html {
 
     color: var(--cl-black);
     background-color: var(--cl-white);
+
+    @include sm {
+        --fs-global: 2.6666666667vw;
+        --container-padding: 2.8rem;
+    }
 }
 
 html.lenis, html.lenis body {
@@ -59,6 +64,12 @@ html.lenis, html.lenis body {
     display: grid;
     column-gap: var(--grid-gap);
     grid-template-columns: repeat(var(--grid-column), 1fr);
+    grid-template-rows: 1fr;
+
+    @include sm {
+        --grid-column: 4;
+        --grid-gap: 1.4rem;
+    }
 }
 
 .g-lines {
