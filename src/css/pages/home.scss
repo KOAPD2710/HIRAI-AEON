@@ -226,7 +226,7 @@
                 &.sm {
                     display: none;
 
-                    &.sm {
+                    @include sm {
                         display: block;
                     }
                 }
