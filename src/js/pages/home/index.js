@@ -240,26 +240,61 @@ const home = {
             const DOMTarget = $(data.next.container).find('.home-mascot')
 
             let target = {
-                list: DOMTarget.find('.home-mascot-list')
+                list: DOMTarget.find('.home-mascot-list'),
+                items: DOMTarget.find('.home-mascot-item'),
             }
 
-            let tl = gsap.timeline({
-                scrollTrigger: {
-                    trigger: DOMTarget.find('.home-mascot-wrapper'),
-                    start: 'top bottom',
-                    endTrigger: '.home-mascot-wrapper',
-                    end: 'bottom bottom',
-                    scrub: .2,
-                }
-            })
-
-            tl
-                .fromTo(target.list, {
-                    yPercent: -30,
-                }, {
-                    yPercent: -10,
-                    ease: 'power2.out'
+            if ($(window).width() > 767) {
+                let tl = gsap.timeline({
+                    scrollTrigger: {
+                        trigger: DOMTarget.find('.home-mascot-wrapper'),
+                        start: 'top bottom',
+                        endTrigger: '.home-mascot-wrapper',
+                        end: 'bottom bottom',
+                        scrub: .2,
+                    }
                 })
+
+                tl
+                    .fromTo(target.list, {
+                        yPercent: -30,
+                    }, {
+                        yPercent: -10,
+                        ease: 'power2.out'
+                    })
+
+                let tlActive = gsap.timeline({
+                    scrollTrigger: {
+                        trigger: DOMTarget,
+                        toggleActions: 'play pause play pause',
+                    },
+                    repeat: -1
+                })
+
+                target.items.each((idx, el) => {
+                    tlActive.to({}, {
+                        onStart: () => {
+                            target.items.removeClass('active');
+                            $(el).addClass('active');
+                        },
+                        duration: 1.2
+                    });
+                })
+                // tlActive.seek(29880);
+
+                target.items.on('pointerenter', function (e) {
+                    tlActive.pause()
+                    target.items.removeClass('active')
+
+                    $(this).addClass('active')
+                })
+                target.items.on('pointerleave', function (e) {
+                    target.items.removeClass('active')
+                    tlActive.play()
+                })
+            } else {
+                target.items.addClass('active');
+            }
 
         }
         ScrollTrigger.create({

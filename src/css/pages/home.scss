@@ -487,11 +487,12 @@
     
         &-item {
             filter: grayscale(.2) contrast(0.9) saturate(0.1) brightness(1.1);
+            transition: filter .3s ease-out;
             will-change: filter;
-            transition: filter .2s ease;
 
             @include sm {
-                width: 11.5rem;
+                // width: 11.5rem;
+                width: 49%;
             }
 
             &.active {
@@ -506,28 +507,42 @@
 
         margin-top: -19rem;
         contain: paint;
+        pointer-events: none;
 
-        &-bg {
+
+
+        &-mask {
             width: 100%;
-            
             margin-block: 9rem -2px;
-
+            
             filter: drop-shadow(0rem -1.1rem 4rem rgba(0, 0, 0, .5) );
         }
         .container {
             position: relative;
             z-index: 2;
-            background-color: $cl-semi-white;
-            background-image: url(../../assets/info-bg.svg);
-            background-size: cover;
-            background-repeat: no-repeat;
+            background-image: linear-gradient(to bottom, $cl-semi-white 50%, white 100%);
+        }
+        &-bg {
+            position: relative;
+            grid-column: 1/-1;
+            grid-row: 1/2;
+            z-index: 1;
+
+            margin-inline: calc(var(--container-padding) * -1);
         }
 
         &-mascot {
             grid-column: 1/6;
+            grid-row: 1/2;
+
+            position: relative;
+            z-index: 2;
+
             display: grid;
             height: fit-content;
+
             margin-left: calc(var(--container-padding) * -1);
+
 
             @include sm {
                 grid-column: 1/-1;
@@ -591,15 +606,23 @@
 
         &-content {
             grid-column: 6/-1;
+            grid-row: 1/2;
 
+            position: relative;
+            z-index: 2;
+            
             padding-left: 6.7rem;
-            margin-top: 8.4rem;
-            margin-bottom: 9.65rem;
+            margin-block: 8.4rem 9.65rem;
+            pointer-events: auto;
 
             @include sm {
                 grid-column: 1/-1;
                 padding-left: unset;
-                margin-top: 12rem;
+                margin-block: 12rem 1.5rem;
+            }
+
+            * {
+                pointer-events: auto;
             }
 
             &-title {
@@ -621,8 +644,12 @@
         z-index: 2;
         margin-top: -1px;
 
-        background-color: $cl-semi-white;
+        background-image: linear-gradient(to bottom, white 80%, #FFE5EE 100%);
         contain: paint;
+
+        @include sm {
+            padding-top: 1.7rem;
+        }
 
 
         &-content {
@@ -641,6 +668,11 @@
             background-size: contain;
             background-repeat: no-repeat;
 
+            @include sm {
+                padding: 1.3rem 1.085rem 1.364rem 1.552rem;
+                margin-left: unset;
+            }
+
             &-flower {
                 position: absolute;
 
@@ -648,11 +680,28 @@
                     width: 3.98rem;
                     bottom: -2.436rem;
                     left: -0.339rem;
+
+                    @include sm {
+                        width: 1.74rem;
+                        bottom: -0.436rem;
+                        left: 0.339rem;
+                    }
                 }
                 &.flower2 {
                     width: 2.3rem;
                     bottom: 1.303rem;
                     left: -1.33rem;
+
+                    @include sm {
+                        width: 1rem;
+                        left: -0.33rem;
+                    }
+                }
+            }
+
+            .txt {
+                @include sm {
+                    @include text(15)
                 }
             }
         }
@@ -660,15 +709,29 @@
         &-title {
             margin-bottom: 4.7rem;
 
+            @include sm {
+                @include text(20);
+                margin-bottom: 1.2rem;
+            }
+
             &-wrapper {
                 margin-top: 1.3rem;
                 margin-left: 7.5rem;
+
+                @include sm {
+                    margin-top: 1.62rem;
+                    margin-left: .7rem;
+                }
             }
         }
 
         &-desc {
             max-width: 78.6rem;
             font-size: 2.2rem;
+
+            @include sm {
+                @include text(21);
+            }
         }
 
         &-main {
@@ -683,6 +746,31 @@
             &-inner {
                 grid-column: 1/2;
                 grid-row: 1/2;
+
+                @include sm {
+                    grid-row: unset;
+                    margin-bottom: 3rem;
+
+                    &:last-child {
+                        margin-bottom: unset;
+                    }
+                }
+
+                img {
+                    &.lg {
+                        @include sm {
+                            display: none;
+                        }
+                    }
+
+                    &.sm {
+                        display: none;
+
+                        @include sm {
+                            display: block;
+                        }
+                    }
+                }
             }
         }
         
@@ -695,19 +783,31 @@
             margin-block: -8rem 5rem;
             margin-right: -1rem;
 
+            @include sm {
+                margin-block: 7rem 3rem;
+            }
+
 
             &-txt {
                 display: grid;
                 .txt {
                     grid-column: 1/2;
                     grid-row: 1/2;
+
+                    @include sm {
+                        @include text(56);
+                    }
+
                     &.front {
                         position: static;
                         z-index: 2;
-                        background: linear-gradient(180deg, #338DFF 30.5%, #FE2BC6 80.45%);
+                        background: linear-gradient(180deg, #338DFF 30.5%, #FE2BC6 80.45%) text;
                         background-clip: text;
-                        -webkit-background-clip: text;
                         -webkit-text-fill-color: transparent;
+
+                        @include sm {
+                            background: linear-gradient(180deg, #338DFF 20.5%, #FE2BC6 100.45%) text;
+                        }
                     }
                     &.back {
                         position: static;
@@ -715,6 +815,10 @@
                         color: $cl-white;
                         -webkit-text-stroke: 1.083rem $cl-white;
                         paint-order: stroke fill;
+
+                        @include sm {
+                            -webkit-text-stroke: 0.583rem $cl-white;
+                        }
                     }
                 }
             }
@@ -728,6 +832,11 @@
 
             transition: all .7s ease;
             will-change: transform;
+
+
+            @include sm {
+                transform: translateY(-20rem) rotate(-28.25deg);
+            }
 
             &.active {
                 opacity: 1;
@@ -778,6 +887,10 @@
                 height: 20rem;
 
                 margin-right: 4.2rem;
+
+                @include sm {
+                    height: 14rem;
+                }
             }
         }
     }
@@ -787,15 +900,6 @@
         contain: paint;
         background-image: radial-gradient(50% 50% at 50% 50%, #FF2C85 66.5%, #C41886 100%);
 
-
-        &-sticky {
-            position: sticky;
-            top: 0;
-            left: 0;
-
-
-            @include size(100%, 100svh);
-        }
 
         &-bg {
             --bg-move: 0rem;
@@ -808,6 +912,10 @@
             background-size: cover;
             background-position: var(--bg-move) var(--bg-move);
             will-change: background-position;
+
+            @include sm {
+                background-size: 40rem;
+            }
         }
 
 
@@ -827,6 +935,12 @@
                 @include size(100%);
 
                 filter: drop-shadow(0px 0.8334rem 0.8334rem rgba(0, 0, 0, 0.25));
+
+
+                @include sm {
+                    padding-block: 3.9rem 2.32rem;
+                    padding-inline: 2.2rem;
+                }
             }
 
             &-papper {
@@ -844,6 +958,13 @@
             &-title {
                 margin-top: 5.5rem;
                 margin-left: 4.3rem;
+
+                @include sm {
+                    @include text(20);
+                    max-width: 24.8rem;
+                    margin-top: 2rem;
+                    margin-left: 1.4rem;
+                }
             }
 
             &-inner { 
@@ -851,6 +972,26 @@
                 margin-block: -2rem -1rem;
                 z-index: 2;
                 mix-blend-mode: darken;
+
+                @include sm {
+                    margin-inline: unset;
+                    margin-block: -7rem 0rem;
+                }
+
+                img {
+                    &.lg {
+                        @include sm {
+                            display: none;
+                        }
+                    }
+                    &.sm {
+                        display: none;
+
+                        @include sm {
+                            display: block;
+                        }
+                    }
+                }
             }
         }
     }
