@@ -1057,21 +1057,22 @@ const home = {
                 title: new SplitText(target.titleWrapper.find('.home-adap-title'), typeOpts.chars)
             }
 
-            let tlTitle = gsap.timeline({
-                scrollTrigger: {
-                    trigger: target.titleWrapper,
-                    start: 'top bottom',
-                    end: 'bottom top',
-                    scrub: true,
-                }
-            })
-
-            tlTitle
-                .from(target.titleWrapper, {
-                    y: '5rem',
-                    ease: 'none'
+            if ($(window).width() > 767) {
+                let tlTitle = gsap.timeline({
+                    scrollTrigger: {
+                        trigger: target.titleWrapper,
+                        start: 'top bottom',
+                        end: 'bottom top',
+                        scrub: true,
+                    }
                 })
 
+                tlTitle
+                    .from(target.titleWrapper, {
+                        y: '5rem',
+                        ease: 'none'
+                    })
+            }
             gsap.from(split.title.chars, {
                 scrollTrigger: {
                     trigger: target.titleWrapper,
@@ -1167,36 +1168,33 @@ const home = {
                     ease: 'none'
                 })
 
-            target.posterSm.each((idx, el) => {
-                $(el).css('justifyContent', 'start')
+            if ($(window).width() > 767) {
+                target.posterSm.each((idx, el) => {
+                    $(el).css('justifyContent', 'start')
+                    let cloner = $(el).find('.home-poster-sm-inner').clone()
 
-                // if ($(el).hasClass('left')) {
-                //     $(el).css('justifyContent', 'start')
-                // } else if ($(el).hasClass('right')) {
-                //     $(el).css('justifyContent', 'end')
-                // }
-                let cloner = $(el).find('.home-poster-sm-inner').clone()
-
-                $(el).append(cloner)
-            })
-
-            let tlInner = gsap.timeline({
-                scrollTrigger: {
-                    trigger: target.main,
-                    scrub: 1,
-                }
-            })
-
-            const offset = 60;
-            tlInner
-                .to(target.posterSm.filter('.left').find('.home-poster-sm-inner'), {
-                    y: `-${offset}rem`,
-                    ease: 'none'
+                    $(el).append(cloner)
                 })
-                .to(target.posterSm.filter('.right').find('.home-poster-sm-inner'), {
-                    y: `-${offset}rem`,
-                    ease: 'none'
-                }, '<=')
+
+                let tlInner = gsap.timeline({
+                    scrollTrigger: {
+                        trigger: target.main,
+                        scrub: 1,
+                    }
+                })
+
+                const offset = 60;
+                tlInner
+                    .to(target.posterSm.filter('.left').find('.home-poster-sm-inner'), {
+                        y: `-${offset}rem`,
+                        ease: 'none'
+                    })
+                    .to(target.posterSm.filter('.right').find('.home-poster-sm-inner'), {
+                        y: `-${offset}rem`,
+                        ease: 'none'
+                    }, '<=')
+            }
+
 
         }
         ScrollTrigger.create({

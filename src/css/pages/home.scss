@@ -617,6 +617,8 @@
 
             @include sm {
                 grid-column: 1/-1;
+                grid-row: 2/3;
+
                 padding-left: unset;
                 margin-block: 12rem 1.5rem;
             }
@@ -960,7 +962,7 @@
                 margin-left: 4.3rem;
 
                 @include sm {
-                    @include text(20);
+                    @include text(h2);
                     max-width: 24.8rem;
                     margin-top: 2rem;
                     margin-left: 1.4rem;
@@ -1002,16 +1004,31 @@
 
         contain: paint;
 
+        @include sm {
+            padding-top: 3.4rem;
+        }
+
         &-title {
             grid-column: 8/-1;
 
             margin-left: -2.4rem;
             margin-bottom: 2rem;
+
+            @include sm {
+                grid-column: 1/-1;
+                @include text(h2);
+                text-align: end;
+                margin-bottom: .6rem;
+            }
         }
 
         &-main {
             grid-column: 1/-1;
             margin-right: -.7rem;
+
+            @include sm {
+                margin-inline: -2.2rem -2rem;
+            }
         }
 
         &-tail {
@@ -1020,6 +1037,10 @@
             left: 0;
             height: 100%;
             padding-bottom: 4.3rem;
+
+            @include sm {
+                padding-block: 1rem 6rem;
+            }
         }
     }
 
@@ -1030,14 +1051,29 @@
 
         contain: paint;
 
+        @include sm {
+            background: linear-gradient(184deg, #fff 21.38%, #fad2ec 100%);
+            margin-bottom: -2px;
+            padding-bottom: 14rem;
+        }
+
         &-title {
             grid-column:  2/-1;
             position: relative;
             margin-left: -3.5rem;
 
+            @include sm {
+                grid-column: 1/-1;
+                margin-left: 1.1rem;
+            }
+
             .h1 {
                 position: relative;
                 z-index: 2;
+
+                @include sm {
+                    @include text(h2);
+                }
             }
 
             &-fade {
@@ -1046,6 +1082,12 @@
                 top: -6rem;
                 left: -4.3rem;
                 opacity: .4;
+
+                @include sm {
+                    @include text(68);
+                    top: -2rem;
+                    left: -2.8rem;                    
+                }
             }
         }
 
@@ -1054,38 +1096,86 @@
             grid-column: 2/12;
 
             margin-top: 3rem;
+
+            @include sm {
+                grid-column: 1/-1;
+                margin-inline: calc(var(--container-padding) * -1);
+            }
         }
  
         &-mascot {
             @include size(39.2rem, 55.217rem);
             margin-left: 33.5rem;
+
+            @include sm {
+                @include size(17.065rem, auto);
+                margin-left: 10.155rem;
+            }
         }
 
         &-item {
             position: absolute;
-            width: 38.497rem;
-            // top: 0;
+            height: fit-content;
+
+            img {
+                &.lg {
+                    @include sm {
+                        display: none;
+                    }
+                }
+                &.sm {
+                    display: none;
+                    
+                    @include sm {
+                        display: block;
+                    }
+                }
+            }
 
             &.item {
                 &-1 {
                     width: 38.497rem;
                     bottom: -0.53rem;
                     left: -0.7rem;
+
+                    @include sm {
+                        width: 14.7rem;
+                        top: 9.075rem;
+                        left: -1.516rem;
+                    }
                 }
                 &-2 {
                     width: 18.9rem;
                     bottom: 12.217rem;
                     left: 10rem;
+
+                    @include sm {
+                        width: 7.368rem;
+                        top: 15.67rem;
+                        left: 2.714rem;
+                    }
                 }
                 &-3 {
                     width: 24.4rem;
                     bottom: 25.317rem;
                     right: 3.4rem;
+
+                    @include sm {
+                        width: 8.9rem;
+                        bottom: 8.7rem;
+                        right: .8rem;
+                    }
                 }
                 &-4 {
                     width: 22.2rem;
                     bottom: 9.217rem;
                     right: 5rem;
+
+                    @include sm {
+                        width: 8.537rem;
+                        right: 1.032rem;
+                        bottom: 2.704rem;
+                    }
                 }
             }
         }
@@ -1097,10 +1187,17 @@
             z-index: -1;
             opacity: .05;
             width: 68.577rem;
+
+            @include sm {
+                width: 26.371rem;
+                top: 0;
+                left: 5.628rem;
+            }
         }
 
         &-flower {
             position: absolute;
+
             &.flower1 {
                 width: 45.3rem;
                 top: 0rem;
@@ -1109,12 +1206,22 @@
                 img {
                     transform: scaleX(-1);
                 }
+
+                @include sm {
+                    width: 13.9rem;
+                    right: -1.6rem;
+                }
+                
             }
 
             &.flower2 {
                 width: 30.6rem;
                 bottom: 0;
                 left: 0;
+
+                @include sm {
+                    width: 17rem;
+                }
             }
         }
     }
@@ -1131,6 +1238,13 @@
 
         contain: paint;
 
+        @include sm {
+            padding-top: 20.2rem;
+            margin-bottom: -3rem;
+
+            background: linear-gradient(171deg, #fad2ec 29%, #ecf9ff 78.5%, #0000 79%);
+        }
+
         &-title {
             grid-column: 1/-1;
             grid-row: 1/2;
@@ -1138,6 +1252,25 @@
 
             padding-left: 7.1rem;
             margin-bottom: 6.3rem;
+
+
+            @include sm {
+                @include text(h2);
+                grid-column: 1/-1;
+
+                text-align: center;
+                max-width: 10rem;
+                height: fit-content;
+
+                align-self: center;
+                padding-left: unset;
+                margin-left: 1.5rem;
+                margin-bottom: unset;
+
+                .txt-2d {
+                    @include text(51);
+                }
+            }
         }
         &-papper {
             position: relative;
@@ -1147,6 +1280,15 @@
             grid-row: 2/3;
             padding-right: 6.176rem;
             filter: drop-shadow(0px 0.469rem 0.469rem rgba(0, 0, 0, 0.25));
+
+
+            @include sm {
+                grid-column: 1/-1;
+                padding-right: unset;
+                margin-inline: -1.5rem;
+                margin-top: -4rem;
+                z-index: 10;
+            }
 
             &-main {
                 display: flex;
@@ -1164,10 +1306,20 @@
                 &-item {
                     height: 24.5rem;
 
+                    @include sm {
+                        height: 9.5rem;
+                    }
+
                     &.item  {
                         &-4, &-5 {
                             height: 23.8rem;
                             margin-top: -2.7rem;
+
+                            @include sm {
+                                height: 10.8rem;
+
+                                margin-top: -1.2rem;
+                            }
                         }
                     }
                 }
@@ -1187,6 +1339,15 @@
 
             margin-top: -8rem;
             margin-inline: -3.2rem calc(var(--container-padding) * -1);
+
+            @include sm {
+                grid-column: 3/5;
+                grid-row: 1/2;
+                margin-inline: -2.7rem -2.15rem;
+                margin-top: unset;
+                align-self: center;
+
+            }
         }
 
         &-mascot {
@@ -1198,6 +1359,17 @@
 
             margin-top: -13.4rem;
             margin-inline: calc(var(--grid-gap) * -1) calc(var(--container-padding) * -1);
+
+            @include sm {
+                grid-column: 3/5;
+                grid-row: 1/2;
+
+                align-self: center;
+                margin-top: unset;
+                margin-inline: -2.7rem -2.15rem;
+                // margin-top: -15rem;
+
+            }
         }
 
         &-cloud {
@@ -1210,9 +1382,14 @@
                 z-index: 10;
                 will-change: transform, filter;
 
-
                 img {
                     filter: drop-shadow(0px -0.3204rem 3.1509rem rgba(255, 255, 255, 0.77));
+                }
+
+                @include sm {
+                    width: 31.019rem;
+                    top: 3rem;
+                    right: -1rem;
                 }
             }
 
@@ -1244,6 +1421,15 @@
                 img {
                     filter: drop-shadow(0px -0.2991rem 2.9407rem rgba(255, 255, 255, 0.77));
                 }
+
+                @include sm {
+                    grid-column: 1/-1;
+
+                    @include sm {
+                        width: 22.563rem;
+                        margin-top: 1rem;
+                    }
+                }
             }
             &.cloud-3 {
                 width: 60.386rem;
@@ -1252,10 +1438,14 @@
 
                 will-change: transform;
 
+                @include sm {
+                    display: none;
+                }
                 
                 img {
                     filter: drop-shadow(0px 0px 9.5302rem #FFF) drop-shadow(0px -.478rem 4.7004rem rgba(255, 229, 238, 0.63));
                 }
+
             }
         }
 
@@ -1268,11 +1458,22 @@
             margin-top: -5.6rem;
             margin-inline: -5.4rem -5.6rem;
 
+            @include sm {
+                margin-top: 17rem;
+                margin-inline: calc(var(--container-padding) * -1);
+            }
+
             &-main {
                 width: 64.9rem;
 
                 margin-left: 42.7rem;
                 margin-top: 21.2rem;
+
+                @include sm {
+                    width: 16.6rem;
+                    margin-top: 5.414rem;
+                    margin-left: 11.905rem;
+                }
             }
 
 
@@ -1280,36 +1481,72 @@
                 position: absolute;
                 filter: grayscale(.9) saturate(0.3) contrast(1.2);
 
+
                 &.item {
                     &-1 {
                         width: 36rem;
                         left: 11rem;
                         bottom: 10rem;
+
+                        @include sm {
+                            width: 9.2rem;
+                            left: 3.809rem;
+                            bottom: 2.554rem;
+                        }
                     }
                     &-2 {
                         width: 28.373rem;
                         top: 15.7rem;
                         left: 0;
+
+                        @include sm {
+                            width: 7.2rem;
+                            top: 4rem;
+                            left: 1rem;
+                        }
                     }
                     &-3 {
                         width: 30.5rem;
                         top: 2.2rem;
                         left: 25.9rem;
+
+                        @include sm {
+                            width: 7.8rem;
+                            top: 0.562rem;
+                            left: 6.615rem;
+                        }
                     }
                     &-4 {
                         width: 28.8rem;
                         top: 0;
                         left: 60.2rem;
+
+                        @include sm {
+                            width: 7.4rem;
+                            left: 15.375rem;
+                        }
                     }
                     &-5 {
                         width: 42.5rem;
                         top: 6.9rem;
                         right: 2.8rem;
+
+                        @include sm {
+                            width: 10.9rem;
+                            top: 1.762rem;
+                            right: 1.715rem;
+                        }
                     }
                     &-6 {
                         width: 34.7rem;
                         right: 0;
                         bottom: 12.6rem;
+
+                        @include sm {
+                            width: 8.9rem;
+                            bottom: 3.218rem;
+                            right: 1rem;
+                        }
                     }
                 }
             }
@@ -1321,6 +1558,11 @@
             margin-block: -31.4rem 20rem;
             margin-inline: calc(var(--container-padding) * -1);
 
+            @include sm {
+                margin-top: -11rem;
+                margin-bottom: unset;
+            }
+
             &-bot {
                 --bg-move: 0rem;
                 background-image: url(../../assets/sticker-showcase-mask-bot-bot.svg);
@@ -1329,6 +1571,13 @@
 
                 img {
                     opacity: 0;
+                }
+            }
+
+            &-space {
+                @include sm {
+                    height: 8rem;
+                    background-color: $cl-white;
                 }
             }
         }
@@ -1343,17 +1592,31 @@
         
         z-index: 1;
 
+        @include sm {
+            background-position-x: -38.5rem;
+            background-size: 223%;
+        }
+
         &-title {
             width: fit-content;
 
             margin-left: 13.5rem;
             transform: skewX(-14deg) skewY(-17deg);
 
+            @include sm {
+                margin-left: 2rem;
+            }
+
             &-wrapper {
                 grid-column: 1/-1;
                 grid-row: 1/2;
 
                 margin-block: 22rem 47rem;
+
+
+                @include sm {
+                    margin-block: 5rem 54rem;
+                }
             }
 
             &-display {
@@ -1363,19 +1626,57 @@
                 filter: drop-shadow(2.5rem 2rem $cl-pink);
 
                 margin-bottom: 8.2rem;
+
+                @include sm {
+                    font-size: 10rem;
+
+                    margin-bottom: 2rem;
+
+                    filter: drop-shadow(0.9rem .8rem $cl-pink);
+                }
             }
 
             &-txt {
                 font-size: 9rem;
                 line-height: 1em;
                 letter-spacing: 0em;
+
+                @include sm {
+                    font-size: 3.3rem;
+                }
             }
         }
 
         &-mascot {
+            position: relative;
             grid-column: 1/-1;
             grid-row: 1/2;
             margin-inline: calc(var(--container-padding) * -1);
+
+
+            &-canvas {
+                position: absolute;
+                top: 0;
+                left: 0;
+                @include size(100%);
+            }
+
+
+            img {
+                &.lg {
+                    @include sm {
+                        display: none;
+                    }
+                }
+                &.sm {
+                    display: none;
+
+                    @include sm {
+                        display: block;
+                        margin-top: 12rem;
+                    }
+                }
+            }
         }
     }
 
@@ -1387,6 +1688,10 @@
         margin-top: -13rem;
 
         contain: paint;
+
+        @include sm {
+            background: linear-gradient(to bottom, transparent 3.8rem, #FFFAE3 3.8rem, #FFE5EE 92.14%);
+        }
 
         .container {
             position: relative;
@@ -1411,6 +1716,13 @@
 
             margin-block: 2.5rem 20rem;
             padding-inline: 1.6rem;
+
+            @include sm {
+                grid-column: 1/-1;
+                grid-row: 2/3;
+                margin-top: 17rem;
+                margin-inline: -29rem;
+            }
         }
 
         &-grid {
@@ -1428,6 +1740,22 @@
             padding-inline: 5.2rem;
 
             @include size(100%);
+
+            @include sm {
+                grid-column: 1/-1;
+                grid-row: 2/3;
+
+                position: relative;
+
+                @include size(unset);
+
+                padding-top: unset;
+                padding-inline: unset;
+                margin-inline: -1.8rem;
+
+                gap: 0.302rem .5rem;
+                grid-template-columns: repeat(2, 1fr);
+            }
 
             &.isDesktop {
                 display: flex;
@@ -1449,16 +1777,37 @@
                     align-self: start;
                 }
             }
+
+            &-item {
+
+                @include sm {
+                    width: 100%;
+                }
+            }
+        }
+
+        &-mascot {
+            display: none;
+
+            @include sm {
+                display: block;
+                grid-column: 2/4;
+                margin-inline: -1.8rem;
+            }
         }
 
         &-display {
-            grid-column: 1/-1;
-            grid-row: 2/3;
-            display: flex;
-            justify-content: end;
+            display: none;
 
-            margin-top: -2.5rem;
-            // margin-right: -1rem;
+            @include sm {
+                display: block;
+                grid-column: 1/-1;
+                grid-row: 1/2;
+
+                margin-block: 6rem 3rem;
+                text-align: center;
+            }
+
 
             &-txt {
                 display: grid;
@@ -1467,16 +1816,20 @@
                     grid-column: 1/2;
                     grid-row: 1/2;
 
-                    font-size: 19rem;
-                    line-height: 1.3em;
+                    @include sm {
+                        @include text(56);
+                    }
 
                     &.front {
                         position: static;
                         z-index: 2;
-                        background: linear-gradient(180deg, #338DFF 30.5%, #FE2BC6 80.45%);
+                        background: linear-gradient(180deg, #338DFF 30.5%, #FE2BC6 80.45%) text;
                         background-clip: text;
-                        -webkit-background-clip: text;
                         -webkit-text-fill-color: transparent;
+
+                        @include sm {
+                            background: linear-gradient(180deg, #338DFF 20.5%, #FE2BC6 100.45%) text;
+                        }
                     }
                     &.back {
                         position: static;
@@ -1484,11 +1837,16 @@
                         color: $cl-white;
                         -webkit-text-stroke: 1.083rem $cl-white;
                         paint-order: stroke fill;
+
+                        @include sm {
+                            -webkit-text-stroke: 0.583rem $cl-white;
+                        }
                     }
                 }
             }
         }
     }
+
     &-showcase {
         position: relative;
         z-index: 2;
@@ -1496,6 +1854,10 @@
 
         contain: paint;
         margin-top: -12.3rem;
+
+        @include sm {
+            margin-top: -3.2rem;
+        }
 
         &-mask {
             --bg-move: 0rem;
@@ -1513,11 +1875,15 @@
 
         .container {
             padding-bottom: 10rem;
+
+            @include sm {
+                padding-bottom: 16rem;
+            }
         }
 
         &-main {
             position: relative;
-            z-index: 2;
+            z-index: 3;
 
             grid-column: 3/11;
             grid-row: 1/2;
@@ -1527,6 +1893,16 @@
 
             background-image: linear-gradient($cl-pink 0%, #FF9BE5 100%);
             border-radius: calc(4.3rem + var(--grid-gap));
+
+
+            @include sm {
+                grid-column: 1/-1;
+
+                padding: 1.2rem;
+
+                margin-top: 3rem;
+                margin-inline: unset;
+            }
         }
 
         &-video {
@@ -1541,7 +1917,7 @@
 
         &-flower {
             position: relative;
-            z-index: 1;
+            z-index: 2;
 
             grid-column: 1/-1;
             grid-row: 1/2;
@@ -1551,6 +1927,15 @@
             &.flower1 {
                 width: 27.1rem;
                 margin-left: -2.8rem;
+
+                @include sm {
+                    width: 17.4rem;
+                    margin-left: unset;
+                    justify-self: end;
+
+                    margin-top: -4rem;
+                    margin-right: -5rem;
+                }
             }
 
             &.flower2 {
@@ -1560,6 +1945,15 @@
 
                 align-self: end;
                 justify-self: end;
+
+                @include sm {
+                    width: 23.3rem;
+                    justify-self: start;
+
+                    margin-left: -12rem;
+                    margin-bottom: -8rem;
+
+                }
 
                 img {
                     transform: scaleX(-1);
@@ -1572,20 +1966,39 @@
                     justify-self: end;
                     z-index: 3;
 
+
                     &-1 {
                         width: 9.5rem;
                         margin-right: 16.6rem;
                         margin-bottom: -2.87rem;
+
+                        @include sm {
+                            width: 4rem;
+
+                            margin-right: -1rem;
+                        }
                     }
                     &-2 {
                         width: 5.1rem;
                         margin-right: 27.73rem;
                         margin-bottom: -1.1rem;
+
+                        @include sm {
+                            width: 2.7rem;
+                            margin-right: 4rem;
+                            margin-bottom: -1.9rem;
+                        }
                     }
                     &-3 {
                         width: 3.5rem;
                         margin-right: 34.84rem;
                         margin-bottom: -2.4rem;
+
+                        @include sm {
+                            width: 1.7rem;
+                            margin-right: 8rem;
+                            margin-bottom: -2.6rem;
+                        }
                     }
                 }
             }
@@ -1598,6 +2011,8 @@
             grid-column: 1/-1;
             grid-row: 1/2;
 
+            height: fit-content;
+
             &.cloud-1 {
                 align-self: end;
                 width: 91.5rem;
@@ -1606,6 +2021,13 @@
                 margin-left: -34rem;
 
                 filter: drop-shadow(0px 0.7243rem 7.1223rem rgba(255, 255, 255, 0.77));
+
+                @include sm {
+                    width: 40rem;
+                    align-self: unset;
+                    margin-block: -5rem 0;
+                    margin-inline: -8rem -8rem;
+                }
             }
 
             &.cloud-2 {
@@ -1617,6 +2039,16 @@
 
                 filter: drop-shadow(0px 0.7243rem 7.1223rem rgba(255, 255, 255, 0.77));
 
+                @include sm {
+                    width: 33rem;
+
+                    align-self: end;
+
+                    margin-top: unset;
+                    margin-right: -16rem;
+                    margin-bottom: -30rem;
+                }
+
                 img {
                     transform: scaleX(-1);
                 }
@@ -1627,7 +2059,16 @@
     &-adap {
         contain: paint;
 
+        @include sm {
+            position: relative;
+            z-index: 2;
+        }
+
         &-title {
+
+            @include sm {
+                @include text(38);
+            }
             
             &-wrapper {            
                 grid-column: 1/-1;
@@ -1643,6 +2084,10 @@
 
                 position: relative;
                 z-index: 4;
+
+                @include sm  {
+                    padding-block: 3rem;
+                }
             }
         }
 
@@ -1671,6 +2116,15 @@
                 line-height: 1.2em;
                 letter-spacing: 0.01em;
                 color: $cl-pink;
+
+                @include sm {
+                    @include text(20);
+                    left: 0.5rem;
+                    bottom: 0.875rem;
+                    width: fit-content;
+
+                    padding: 2.8rem 3.784rem 1.2rem 6.4rem;
+                }
             }
         }
 
@@ -1678,6 +2132,10 @@
             margin-left: 49.8rem;
             contain: paint;
 
+            @include sm {
+                margin-left: unset;
+            }
+            
             &-wrapper {
                 grid-column: 1/-1;
                 grid-row: 3/4;
@@ -1685,6 +2143,11 @@
                 z-index: 1;
 
                 margin-inline: calc(var(--container-padding) * -1);
+
+                
+                @include sm {
+                    z-index: 3;
+                }
             }
 
             &-txt {
@@ -1700,6 +2163,16 @@
                 line-height: 1.2em;
                 letter-spacing: 0.01em;
                 color: $cl-pink;
+
+                @include sm {
+                    width: fit-content;
+                    @include text(20);
+
+                    bottom: 0.816rem;
+                    right: 1.027rem;
+
+                    padding: 4.2rem 8.784rem 2rem 1.4rem;
+                }
             }
         }
 
@@ -1718,16 +2191,27 @@
                 display: grid;
                 margin-inline: calc(var(--container-padding) * -1);
 
+                @include sm {
+                    grid-row: 5/6;
+                }
             }
 
             &.lanyard-1 {
                 width: 65.327rem;
                 margin-top: -3rem;
                 margin-left: -0rem;
+
+                @include sm {
+                    width: 27.503rem;
+                }
             }
             &.lanyard-2 {
                 width: 51.77rem;
                 margin-left: 15.23rem;
+
+                @include sm {
+                    width: 20.937rem;
+                }
             }
         }
     }
@@ -1738,6 +2222,10 @@
 
         margin-top: -21.394rem;
         contain: paint;
+
+        @include sm {
+            margin-top: -44rem;
+        }
 
 
         &::after {
@@ -1764,12 +2252,22 @@
                 width: 62rem;
                 top: 0rem;
                 left: -9.9rem;
+
+                @include sm {
+                    width: 19.096rem;
+                    left: -1.5rem;
+                }
             }
 
             &.flower-2 {
                 width: 44.2rem;
                 top: calc(-3.135rem + 21.394rem);
                 right: -8.9rem;
+
+                @include sm {
+                    width: 35.925rem;
+                    top: 5rem;
+                }
 
                 img {
                     transform: scaleX(-1);
@@ -1803,6 +2301,10 @@
             margin-inline: calc(var(--container-padding) * -1);
 
             background: linear-gradient(180deg, #FFF 0%, $cl-pink 100%);
+
+            @include sm {
+                flex-direction: column;
+            }
         }
         &-sm {
             position: absolute;
@@ -1814,6 +2316,10 @@
 
             overflow: hidden;
 
+            @include sm {
+                position: unset;
+
+            }
 
             &.left {
                 left: 0;
@@ -1826,6 +2332,10 @@
         &-center {
             width: 65.6rem;
             flex-shrink: 0;
+
+            @include sm {
+                width: unset;
+            }
         }
     }
 
@@ -1836,6 +2346,10 @@
         
         margin-top: -2px;
         contain: paint;
+
+        @include sm {
+            height: 100svh;
+        }
 
         .container {
             height: 100%;
@@ -1856,11 +2370,28 @@
                 align-items: center;
                 text-align: center;
                 height: 100%;
+
+                @include sm {
+                    margin-inline: calc(var(--container-padding)* -1);
+                }
             }
 
             * {
                 position: relative;
                 z-index: 2;
+            }
+        }
+
+        &-title {
+            @include sm {
+                @include text(82);
+                margin-block: -1rem
+            }
+        }
+
+        &-label {
+            @include sm {
+                @include text(15);
             }
         }
 
@@ -1871,6 +2402,11 @@
             width: 48.2rem;
             margin-top: -7rem;
             opacity: .16;
+
+            @include sm {
+                width: 16.599rem;
+                margin-top: -3.1rem;
+            }
         }
 
         &-mountain {
@@ -1881,15 +2417,26 @@
 
             margin-left: calc(var(--container-padding) * -1 - 1.677rem);
             width: 50rem;
+
+            @include sm {
+                width: 18.947rem;
+            }
         }
 
         &-cloud {
             position: absolute;
 
+
             &.cloud-1 {
                 width: 180rem;
 
                 bottom: -49rem;
+                align-self: end;
+                height: fit-content;
+
+                @include sm {
+                    bottom: -46rem;
+                }
             }
 
             &.cloud-2 {
@@ -1898,6 +2445,11 @@
 
                 width: 28.8rem;
                 filter: drop-shadow(0px 0px 4.5447rem #FFF) blur(.25rem);
+
+                @include sm {
+                    width: 15rem;
+                    right: -3.5rem;
+                }
             }
         }
     }
