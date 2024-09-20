@@ -16,7 +16,6 @@ const home = {
             stopLenis()
             const DOMTarget = $(data.next.container).find('.home-hero')
 
-
             const target = {
                 logo: DOMTarget.find('.home-hero-logo'),
                 mascot: DOMTarget.find('.home-hero-mascot'),
@@ -63,7 +62,7 @@ const home = {
                     stagger: .03,
                     duration: .6,
                     onComplete: () => split.title.revert()
-                }, '>=-.8')
+                }, `>=-${$(window).width() > 767 ? .8 : 1}`)
                 .from(target.contentLogo, {
                     opacity: 0,
                     duration: 1.2,
@@ -106,42 +105,88 @@ const home = {
                 topicDesc: new SplitText(target.topic.find('.home-preamble-des'), typeOpts.chars),
             }
 
-            let tlTxt = gsap.timeline({
-                scrollTrigger: {
-                    trigger: '.home-preamble-content.client',
-                    start: 'top bottom',
-                }
-            })
-
-            tlTxt
-                .from(split.clientTitle.chars, {
-                    yPercent: 50,
-                    opacity: 0,
-                    stagger: .03,
-                    duration: .6,
-                    onComplete: () => split.clientTitle.revert()
+            if ($(window).width() > 767) {
+                let tlTxtDesktop = gsap.timeline({
+                    scrollTrigger: {
+                        trigger: '.home-preamble-content.client',
+                        start: 'top bottom',
+                    }
                 })
-                .from(split.clientDesc.chars, {
-                    yPercent: 50,
-                    opacity: 0,
-                    stagger: .004,
-                    duration: .4,
-                    onComplete: () => split.clientDesc.revert()
-                }, '>=-.6')
-                .from(split.topicTitle.chars, {
-                    yPercent: 50,
-                    opacity: 0,
-                    stagger: .03,
-                    duration: .6,
-                    onComplete: () => split.topicTitle.revert()
-                }, '>=-.4')
-                .from(split.topicDesc.chars, {
-                    yPercent: 50,
-                    opacity: 0,
-                    stagger: .004,
-                    duration: .4,
-                    onComplete: () => split.topicDesc.revert()
-                }, '>=-.6')
+
+                tlTxtDesktop
+                    .from(split.clientTitle.chars, {
+                        yPercent: 50,
+                        opacity: 0,
+                        stagger: .03,
+                        duration: .6,
+                        onComplete: () => split.clientTitle.revert()
+                    })
+                    .from(split.clientDesc.chars, {
+                        yPercent: 50,
+                        opacity: 0,
+                        stagger: .004,
+                        duration: .4,
+                        onComplete: () => split.clientDesc.revert()
+                    }, '>=-.6')
+                    .from(split.topicTitle.chars, {
+                        yPercent: 50,
+                        opacity: 0,
+                        stagger: .03,
+                        duration: .6,
+                        onComplete: () => split.topicTitle.revert()
+                    }, '>=-.4')
+                    .from(split.topicDesc.chars, {
+                        yPercent: 50,
+                        opacity: 0,
+                        stagger: .004,
+                        duration: .4,
+                        onComplete: () => split.topicDesc.revert()
+                    }, '>=-.6')
+            } else {
+                let tlTxtClient = gsap.timeline({
+                    scrollTrigger: {
+                        trigger: '.home-preamble-content.client',
+                        start: 'top bottom-=20%',
+                    }
+                })
+                tlTxtClient
+                    .from(split.clientTitle.chars, {
+                        yPercent: 50,
+                        opacity: 0,
+                        stagger: .03,
+                        duration: .6,
+                        onComplete: () => split.clientTitle.revert()
+                    })
+                    .from(split.clientDesc.chars, {
+                        yPercent: 50,
+                        opacity: 0,
+                        stagger: .004,
+                        duration: .4,
+                        onComplete: () => split.clientDesc.revert()
+                    }, '>=-.6')
+
+                let tlTxtTopoic = gsap.timeline({
+                    scrollTrigger: {
+                        trigger: '.home-preamble-content.topic',
+                        start: 'top bottom-=20%',
+                    }
+                })
+                tlTxtTopoic
+                    .from(split.topicTitle.chars, {
+                        yPercent: 50,
+                        opacity: 0,
+                        stagger: .03,
+                        duration: .6,
+                        onComplete: () => split.topicTitle.revert()
+                    })
+                    .from(split.topicDesc.chars, {
+                        yPercent: 50,
+                        opacity: 0,
+                        stagger: .004,
+                        duration: .4,
+                        onComplete: () => split.topicDesc.revert()
+                    }, '>=-.6')
+            }
 
             let tlAnimMascot = gsap.timeline({
                 scrollTrigger: {
@@ -187,7 +232,7 @@ const home = {
             let tlAnimMountain = gsap.timeline({
                 scrollTrigger: {
                     trigger: '.home-preamble-mountain',
-                    start: 'top center',
+                    start: `top top+=${$(window).width() > 767 ? '50%' : '75%'}`,
                     scrub: .1,
                 }
             })
@@ -216,7 +261,7 @@ const home = {
                 scrollTrigger: {
                     trigger: DOMTarget,
                     start: 'top bottom',
-                    end: 'bottom center',
+                    end: `bottom top+=${$(window).width() > 767 ? '50%' : '0%'}`,
                     scrub: 2,
                 }
             })
@@ -414,22 +459,39 @@ const home = {
                     onComplete: () => split.desc.revert()
                 }, ">=-.3")
 
-            let tlAnimItem = gsap.timeline({
-                scrollTrigger: {
-                    trigger: target.main,
-                    start: 'top top+=75%',
-                }
-            })
-
-            tlAnimItem
-                .from(target.main.find('.home-idea-main-inner'), {
-                    y: '10rem',
-                    opacity: 0,
-                    ease: 'power2.out',
-                    stagger: .2,
-                    duration: 1.5,
-                    clearProps: 'all'
+            if ($(window).width() > 767) {
+                let tlAnimItem = gsap.timeline({
+                    scrollTrigger: {
+                        trigger: target.main,
+                        start: 'top top+=75%',
+                    }
                 })
+
+                tlAnimItem
+                    .from(target.main.find('.home-idea-main-inner'), {
+                        y: '10rem',
+                        opacity: 0,
+                        ease: 'sine.out',
+                        stagger: .2,
+                        duration: 1.5,
+                        clearProps: 'all'
+                    })
+            } else {
+                target.main.find('.home-idea-main-inner').each((idx, el) => {
+                    gsap.from(el, {
+                        scrollTrigger: {
+                            trigger: el,
+                            start: 'top bottom-=40%',
+                        },
+                        y: '4rem',
+                        opacity: 0,
+                        ease: 'power2.out',
+                        duration: .8,
+                        clearProps: 'all'
+                    })
+                })
+            }
+
 
 
             // Marquee
@@ -792,43 +854,84 @@ const home = {
                     start: 'bottom bottom-=10%',
                 }
             })
-            tlHead
-                .from(split.title.chars, {
-                    yPercent: 50,
-                    opacity: 0,
-                    stagger: .01,
-                    duration: .6,
-                    ease: 'power1.out',
-                    onComplete: () => split.title.revert()
-                })
-                .from(target.paper, {
-                    yPercent: 10,
-                    opacity: 0,
-                    ease: 'power1.out',
-                    duration: .6,
-                    clearProps: 'all'
-                }, '>=-.3')
-                .from(target.circle, {
-                    yPercent: 10,
-                    opacity: 0,
-                    ease: 'power1.out',
-                    clearProps: 'all'
-                }, '>=-.2')
-                .from(target.paperItems, {
-                    yPercent: 5,
-                    opacity: 0,
-                    stagger: .08,
-                    duration: .8,
-                    ease: 'sine.out',
-                    clearProps: 'all'
-                }, '>=-.5')
-                .from(target.mascot, {
-                    yPercent: 5,
-                    opacity: 0,
-                    duration: .8,
-                    ease: 'sine.out',
-                    clearProps: 'all'
-                }, '>=-.8')
+
+            if ($(window).width() > 767) {
+                tlHead
+                    .from(split.title.chars, {
+                        yPercent: 50,
+                        opacity: 0,
+                        stagger: .01,
+                        duration: .6,
+                        ease: 'power1.out',
+                        onComplete: () => split.title.revert()
+                    })
+                    .from(target.paper, {
+                        yPercent: 10,
+                        opacity: 0,
+                        ease: 'power1.out',
+                        duration: .6,
+                        clearProps: 'all'
+                    }, '>=-.3')
+                    .from(target.circle, {
+                        yPercent: 10,
+                        opacity: 0,
+                        ease: 'power1.out',
+                        clearProps: 'all'
+                    }, '>=-.2')
+                    .from(target.paperItems, {
+                        yPercent: 5,
+                        opacity: 0,
+                        stagger: .08,
+                        duration: .8,
+                        ease: 'sine.out',
+                        clearProps: 'all'
+                    }, '>=-.5')
+                    .from(target.mascot, {
+                        yPercent: 5,
+                        opacity: 0,
+                        duration: .8,
+                        ease: 'sine.out',
+                        clearProps: 'all'
+                    }, '>=-.8')
+            } else {
+                tlHead
+                    .from(split.title.chars, {
+                        yPercent: 50,
+                        opacity: 0,
+                        stagger: .01,
+                        duration: .6,
+                        ease: 'power1.out',
+                        onComplete: () => split.title.revert()
+                    })
+                    .from(target.circle, {
+                        yPercent: 10,
+                        opacity: 0,
+                        ease: 'power1.out',
+                        clearProps: 'all'
+                    }, '>=-.2')
+                    .from(target.mascot, {
+                        yPercent: 5,
+                        opacity: 0,
+                        duration: .8,
+                        ease: 'sine.out',
+                        clearProps: 'all'
+                    }, '>=-.6')
+                    .from(target.paper, {
+                        yPercent: 10,
+                        opacity: 0,
+                        ease: 'power1.out',
+                        duration: .6,
+                        clearProps: 'all'
+                    }, '>=-.6')
+                    .from(target.paperItems, {
+                        yPercent: 5,
+                        opacity: 0,
+                        stagger: .08,
+                        duration: .8,
+                        ease: 'sine.out',
+                        clearProps: 'all'
+                    }, '>=-.5')
+            }
 
 
             let tlCloud2 = gsap.timeline({
@@ -886,7 +989,7 @@ const home = {
                     ease: 'none'
                 })
                 .to(DOMTarget.find('.home-sticker-mask-bot'), {
-                    '--bg-move': '-40rem',
+                    '--bg-move': `${$(window).width() > 767 ? '-40rem' : '-18rem'}`,
                     ease: 'none'
                 }, '<=')
 
@@ -944,6 +1047,20 @@ const home = {
                         yPercent: -10,
                         ease: 'none'
                     }, "<=")
+            } else {
+                target.allItems.each((idx, el) => {
+                    gsap.from(el, {
+                        scrollTrigger: {
+                            trigger: el,
+                            start: 'top bottom-=25%',
+                        },
+                        y: '4rem',
+                        opacity: 0,
+                        ease: 'sine.out',
+                        duration: .6,
+                        clearProps: 'all'
+                    })
+                })
             }
 
             let tlMaskTop = gsap.timeline({
@@ -1111,16 +1228,38 @@ const home = {
                     scale: 1.1,
                     ease: 'power1.out'
                 }, '<=')
-                .from(target.lanyard.filter('.lanyard-1'), {
-                    yPercent: -5,
-                    xPercent: -5,
-                    ease: 'power1.out'
-                }, '<=')
-                .from(target.lanyard.filter('.lanyard-2'), {
-                    yPercent: -10,
-                    xPercent: -5,
-                    ease: 'power1.out'
-                }, '<=')
+            if ($(window).width() > 767) {
+                tlBag
+                    .from(target.lanyard.filter('.lanyard-1'), {
+                        yPercent: -5,
+                        xPercent: -5,
+                        ease: 'power1.out'
+                    }, '<=')
+                    .from(target.lanyard.filter('.lanyard-2'), {
+                        yPercent: -10,
+                        xPercent: -5,
+                        ease: 'power1.out'
+                    }, '<=')
+            } else {
+                let tlLanyard = gsap.timeline({
+                    scrollTrigger: {
+                        trigger: target.lanyard,
+                        scrub: 1.5,
+                        // markers: true
+                    }
+                })
+                tlLanyard
+                    .from(target.lanyard.filter('.lanyard-1'), {
+                        yPercent: -5,
+                        xPercent: -5,
+                        ease: 'power1.out'
+                    }, '<=')
+                    .from(target.lanyard.filter('.lanyard-2'), {
+                        yPercent: -10,
+                        xPercent: -5,
+                        ease: 'power1.out'
+                    }, '<=')
+            }
 
         }
         ScrollTrigger.create({
