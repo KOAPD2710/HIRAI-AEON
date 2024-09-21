@@ -1,3 +1,29 @@
+.floating {
+    position: fixed;
+
+    z-index: 99;
+    @include size(100%, 100dvh);
+    // pointer-events:  none;
+    display: grid;
+    filter: blur(.08rem);
+    opacity: .9;
+    mask-image: linear-gradient(to bottom, white 80%, transparent 110%);
+
+    &-canvas {
+        position: relative;
+        z-index: 1;
+
+        grid-column: 1/2;
+        grid-row: 1/2;
+        
+        @include size(100%);
+
+        canvas {
+            @include size(100%);
+        }
+    }
+}
+
 .home {
     &-hero {
         position: relative;

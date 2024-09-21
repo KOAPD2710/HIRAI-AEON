@@ -23,13 +23,13 @@
     "@barba/core": "^2.10.0",
     "@barba/prefetch": "^2.2.0",
     "@parcel/transformer-sass": "^2.12.0",
-    "lenis": "^1.1.13",
     "concurrently": "^7.0.0",
     "cross-env": "^7.0.3",
     "dotenv": "^16.4.1",
     "express": "^4.19.2",
     "gsap": "^3.12.5",
     "jquery": "^3.7.1",
+    "lenis": "^1.1.13",
     "nodemon": "^2.0.20",
     "parcel": "^2.12.0",
     "parcel-reporter-static-files-copy": "^1.5.3",
@@ -41,6 +41,7 @@
   "browserslist": "> 0.5%, last 2 versions, not dead, Safari 14",
   "dependencies": {
     "@vercel/analytics": "^1.3.1",
-    "cors": "^2.8.5"
+    "cors": "^2.8.5",
+    "particles.js": "^2.0.0"
   }
 }

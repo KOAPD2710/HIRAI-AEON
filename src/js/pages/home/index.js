@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import gsap from 'gsap';
+import gsap, { random } from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import { SplitText } from '../../libs/SplitText';
 import { typeOpts } from '../../helper/index';
@@ -11,6 +11,193 @@ const home = {
     namespace: "home",
     afterEnter(data) {
         console.log(`enter ${this.namespace}`);
+
+        function FloatingFlower(data) {
+
+            if ($(window).width() > 767) {
+                particlesJS('floating-canvas-1', {
+                    particles: {
+                        number: {
+                            value: 55,
+                            density: {
+                                enable: true,
+                                value_area: 800
+                            }
+                        },
+                        color: {
+                            value: "#ff69b4"
+                        },
+                        shape: {
+                            type: "image",
+                            image: {
+                                src: "../../assets/floating-1.png",
+                                width: 100,
+                                height: 100
+                            },
+                        },
+                        rotate: {
+                            value: 360,
+                            random: true,
+                            anim: {
+                                enable: true,
+                                speed: 10
+                            }
+                        },
+                        opacity: {
+                            value: .5,
+                            random: true,
+                            anim: {
+                                enable: true,
+                                speed: .5,
+                                opacity_min: 0.1,
+                                sync: false
+                            }
+                        },
+                        size: {
+                            value: 5,
+                            random: true,
+                            anim: {
+                                enable: true,
+                                speed: 2,
+                                size_min: 3,
+                                sync: false
+                            }
+                        },
+                        line_linked: {
+                            enable: false,
+                        },
+                        move: {
+                            enable: true,
+                            speed: 2,
+                            direction: "bottom",
+                            random: true,
+                            out_mode: "out",
+                            bounce: false,
+                            attract: {
+                                enable: true,
+                                rotateX: 3000,
+                                rotateY: 1500
+                            },
+                        }
+                    },
+                    interactivity: {
+                        detect_on: "window",
+                        events: {
+                            onhover: {
+                                enable: true,
+                                mode: ["repulse"]
+                            },
+                            onclick: {
+                                enable: true,
+                                mode: "push"
+                            },
+                            resize: true,
+                        },
+                        modes: {
+                            repulse: {
+                                distance: 30,
+                                duration: 0.4
+                            },
+                            push: {
+                                particles_nb: 4
+                            }
+                        }
+                    },
+                    retina_detect: true
+                });
+                particlesJS('floating-canvas-2', {
+                    particles: {
+                        number: {
+                            value: 35,
+                            density: {
+                                enable: true,
+                                value_area: 800
+                            }
+                        },
+                        color: {
+                            value: "#ff69b4"
+                        },
+                        shape: {
+                            type: "image",
+                            image: {
+                                src: "../../assets/floating-2.png",
+                                width: 100,
+                                height: 100
+                            },
+                        },
+                        rotate: {
+                            value: 360,
+                            random: true,
+                            anim: {
+                                enable: true,
+                                speed: 10
+                            }
+                        },
+                        opacity: {
+                            value: .75,
+                            random: true,
+                            anim: {
+                                enable: true,
+                                speed: 3,
+                                opacity_min: 0.1,
+                                sync: false
+                            }
+                        },
+                        size: {
+                            value: 9,
+                            random: true,
+                            anim: {
+                                enable: true,
+                                speed: 2,
+                                size_min: 5,
+                                sync: false
+                            }
+                        },
+                        line_linked: {
+                            enable: false,
+                        },
+                        move: {
+                            enable: true,
+                            speed: 2.2,
+                            direction: "bottom",
+                            random: true,
+                            out_mode: "out",
+                            bounce: false,
+                            attract: {
+                                enable: true,
+                                rotateX: 3000,
+                                rotateY: 1500
+                            },
+                        }
+                    },
+                    interactivity: {
+                        detect_on: "window",
+                        events: {
+                            onhover: {
+                                enable: true,
+                                mode: ["repulse"]
+                            },
+                            onclick: {
+                                enable: true,
+                                mode: "push"
+                            },
+                            resize: true,
+                        },
+                        modes: {
+                            repulse: {
+                                distance: 30,
+                                duration: 0.4
+                            },
+                            push: {
+                                particles_nb: 4
+                            }
+                        }
+                    },
+                    retina_detect: true
+                });
+            }
+        }
+        FloatingFlower(data)
 
         function homeHero(data) {
             stopLenis()
@@ -1245,7 +1432,6 @@ const home = {
                     scrollTrigger: {
                         trigger: target.lanyard,
                         scrub: 1.5,
-                        // markers: true
                     }
                 })
                 tlLanyard
